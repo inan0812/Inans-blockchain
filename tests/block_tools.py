@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Callable, Dict, List, Optional, Tuple, Any
 
 from blspy import AugSchemeMPL, G1Element, G2Element, PrivateKey
-from inanbip158 import PyBIP158
+from chiabip158 import PyBIP158
 
 from inan.cmds.init_funcs import create_all_ssl, create_default_inan_config
 from inan.full_node.bundle_tools import (

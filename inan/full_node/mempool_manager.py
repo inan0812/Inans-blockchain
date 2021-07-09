@@ -6,7 +6,7 @@ import time
 from concurrent.futures.process import ProcessPoolExecutor
 from typing import Dict, List, Optional, Set, Tuple
 from blspy import AugSchemeMPL, G1Element
-from inanbip158 import PyBIP158
+from chiabip158 import PyBIP158
 
 from inan.consensus.block_record import BlockRecord
 from inan.consensus.constants import ConsensusConstants
