@@ -1,6 +1,6 @@
 [submodule "inans-blockchain-gui"]
 	path = inans-blockchain-gui
-	url = https://github.com/inan0812/inans-blockchain-gui.git
+	url = https://github.com/inan0812/Inans-blockchain-gui.git
 	branch = main
 [submodule "mozilla-ca"]
 	path = mozilla-ca
