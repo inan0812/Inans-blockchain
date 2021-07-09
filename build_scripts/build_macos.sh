@@ -30,9 +30,9 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	echo >&2 "pyinstaller failed!"
 	exit $LAST_EXIT_CODE
 fi
-cp -r dist/daemon ../inan-blockchain-gui
+cp -r dist/daemon ../inans-blockchain-gui
 cd .. || exit
-cd inan-blockchain-gui || exit
+cd inans-blockchain-gui || exit
 
 echo "npm build"
 npm install

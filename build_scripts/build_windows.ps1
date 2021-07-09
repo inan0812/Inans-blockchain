@@ -70,10 +70,10 @@ $SPEC_FILE = (python -c 'import inan; print(inan.PYINSTALLER_SPEC_PATH)') -join 
 pyinstaller --log-level INFO $SPEC_FILE
 
 Write-Output "   ---"
-Write-Output "Copy inan executables to inan-blockchain-gui\"
+Write-Output "Copy inan executables to inans-blockchain-gui\"
 Write-Output "   ---"
-Copy-Item "dist\daemon" -Destination "..\inan-blockchain-gui\" -Recurse
-Set-Location -Path "..\inan-blockchain-gui" -PassThru
+Copy-Item "dist\daemon" -Destination "..\inans-blockchain-gui\" -Recurse
+Set-Location -Path "..\inans-blockchain-gui" -PassThru
 
 git status
 
