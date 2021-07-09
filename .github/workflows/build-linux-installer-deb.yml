@@ -104,7 +104,7 @@ jobs:
       run: |
         . ./activate
         ldd --version
-        cd ./inans-blockchain-gui
+        cd ./Inans-blockchain-gui
         git status
         cd ../build_scripts
         sh build_linux_deb.sh amd64

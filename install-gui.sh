@@ -14,7 +14,7 @@ if [ "$(id -u)" = 0 ]; then
 	exit 1
 fi
 
-# Allows overriding the branch or commit to build in inans-blockchain-gui
+# Allows overriding the branch or commit to build in Inans-blockchain-gui
 SUBMODULE_BRANCH=$1
 
 UBUNTU=false
@@ -80,7 +80,7 @@ if [ ! "$CI" ]; then
 	echo "Running git submodule update."
 	echo ""
 	git submodule update
-	cd inans-blockchain-gui
+	cd Inans-blockchain-gui
 
 	if [ "$SUBMODULE_BRANCH" ];
 	then
@@ -102,4 +102,4 @@ fi
 echo ""
 echo "Inan blockchain install-gui.sh completed."
 echo ""
-echo "Type 'cd inans-blockchain-gui' and then 'npm run electron &' to start the GUI."
+echo "Type 'cd Inans-blockchain-gui' and then 'npm run electron &' to start the GUI."
