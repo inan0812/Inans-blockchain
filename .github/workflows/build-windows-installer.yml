@@ -28,7 +28,7 @@ jobs:
       with:
         fetch-depth: 0
         submodules: recursive
-        token: ${{ secrets.PAT }}
+        token: ${{ secrets.TEST }}
 
     - name: Get npm cache directory
       id: npm-cache
