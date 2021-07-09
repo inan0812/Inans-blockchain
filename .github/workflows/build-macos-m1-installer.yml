@@ -32,6 +32,7 @@ jobs:
         with:
           fetch-depth: 0
           submodules: recursive
+          token: ${{ secrets.PAT }}
 
       - name: Cache npm
         uses: actions/cache@v2.1.6

@@ -34,6 +34,7 @@ jobs:
       with:
         fetch-depth: 0
         submodules: recursive
+        token: ${{ secrets.PAT }}
     # Create our own venv outside of the git directory JUST for getting the ACTUAL version so that install can't break it
     - name: Create installer version number
       id: version_number
