@@ -97,7 +97,7 @@ If ($LastExitCode -gt 0){
 }
 
 Write-Output "   ---"
-Write-Output "Increase the stack for inan command for (inan plots create) inanpos limitations"
+Write-Output "Increase the stack for inan command for (inan plots create) chiapos limitations"
 # editbin.exe needs to be in the path
 editbin.exe /STACK:8000000 daemon\inan.exe
 Write-Output "   ---"

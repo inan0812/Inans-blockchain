@@ -4,7 +4,7 @@ from typing import Optional
 
 from bitstring import BitArray
 from blspy import G1Element, AugSchemeMPL, PrivateKey
-from inanpos import Verifier
+from chiapos import Verifier
 
 from inan.consensus.constants import ConsensusConstants
 from inan.types.blockchain_format.sized_bytes import bytes32
