@@ -1,6 +1,8 @@
 # Inan-blockchain
 
-THIS IS IN EARLY TESTING. THE GENESIS WILL BE ROUTINELY CHANGED AS TESTS PROCEED.
+THIS IS IN EARLY TESTING. THE GENESIS WILL BE ROUTINELY CHANGED AS TESTS PROCEED...
+
+
 
 
 
@@ -27,8 +29,7 @@ Please check out the [wiki](https://github.com/Inan-Network/inan-blockchain/wiki
 and [FAQ](https://github.com/Inan-Network/inan-blockchain/wiki/FAQ) for
 information on this project.
 
-Python 3.7+ is required. Make sure your default python version is >=3.7
-by typing `python3`.
+
 
 If you are behind a NAT, it can be difficult for peers outside your subnet to
 reach you when they start up. You can enable
