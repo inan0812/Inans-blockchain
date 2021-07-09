@@ -1,6 +1,6 @@
 from typing import Tuple
 
-from inanvdf import prove
+from chiavdf import prove
 
 from inan.consensus.constants import ConsensusConstants
 from inan.types.blockchain_format.classgroup import ClassgroupElement
