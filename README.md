@@ -1,6 +1,11 @@
-# chia-blockchain
+# Inan-blockchain
 
-![Alt text](https://www.chia.net/img/chia_logo.svg)
+THIS IS IN EARLY TESTING. THE GENESIS WILL BE ROUTINELY CHANGED AS TESTS PROCEED.
+
+
+
+
+
 
 | Current Release/main | Development Branch/dev |
 |         :---:          |          :---:         |
