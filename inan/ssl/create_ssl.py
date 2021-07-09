@@ -68,7 +68,7 @@ def make_ca_cert(cert_path: Path, key_path: Path):
         [
             x509.NameAttribute(NameOID.ORGANIZATION_NAME, "Inan"),
             x509.NameAttribute(NameOID.COMMON_NAME, "Inan CA"),
-            x509.NameAttribute(NameOID.ORGANIZATIONAL_UNIT_NAME, "Organic Farming Division"),
+            x509.NameAttribute(NameOID.ORGANIZATIONAL_UNIT_NAME, "Fork it real good"),
         ]
     )
     root_cert = (
