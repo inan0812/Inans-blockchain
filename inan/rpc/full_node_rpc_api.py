@@ -1,27 +1,27 @@
 from typing import Any, Callable, Dict, List, Optional
 
-from chia.consensus.block_record import BlockRecord
-from chia.consensus.pos_quality import UI_ACTUAL_SPACE_CONSTANT_FACTOR
-from chia.full_node.full_node import FullNode
-from chia.full_node.mempool_check_conditions import get_puzzle_and_solution_for_coin
-from chia.types.blockchain_format.program import Program, SerializedProgram
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.coin_record import CoinRecord
-from chia.types.coin_solution import CoinSolution
-from chia.types.full_block import FullBlock
-from chia.types.generator_types import BlockGenerator
-from chia.types.mempool_inclusion_status import MempoolInclusionStatus
-from chia.types.spend_bundle import SpendBundle
-from chia.types.unfinished_header_block import UnfinishedHeaderBlock
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.ints import uint32, uint64, uint128
-from chia.util.ws_message import WsRpcMessage, create_payload_dict
+from inan.consensus.block_record import BlockRecord
+from inan.consensus.pos_quality import UI_ACTUAL_SPACE_CONSTANT_FACTOR
+from inan.full_node.full_node import FullNode
+from inan.full_node.mempool_check_conditions import get_puzzle_and_solution_for_coin
+from inan.types.blockchain_format.program import Program, SerializedProgram
+from inan.types.blockchain_format.sized_bytes import bytes32
+from inan.types.coin_record import CoinRecord
+from inan.types.coin_solution import CoinSolution
+from inan.types.full_block import FullBlock
+from inan.types.generator_types import BlockGenerator
+from inan.types.mempool_inclusion_status import MempoolInclusionStatus
+from inan.types.spend_bundle import SpendBundle
+from inan.types.unfinished_header_block import UnfinishedHeaderBlock
+from inan.util.byte_types import hexstr_to_bytes
+from inan.util.ints import uint32, uint64, uint128
+from inan.util.ws_message import WsRpcMessage, create_payload_dict
 
 
 class FullNodeRpcApi:
     def __init__(self, service: FullNode):
         self.service = service
-        self.service_name = "chia_full_node"
+        self.service_name = "inan_full_node"
         self.cached_blockchain_state: Optional[Dict] = None
 
     def get_routes(self) -> Dict[str, Callable]:

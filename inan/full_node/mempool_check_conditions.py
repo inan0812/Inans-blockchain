@@ -3,22 +3,22 @@ import time
 from typing import Tuple, Dict, List, Optional, Set
 from clvm import SExp
 
-from chia.consensus.cost_calculator import NPCResult
-from chia.consensus.condition_costs import ConditionCost
-from chia.full_node.generator import create_generator_args, setup_generator_args
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.program import NIL
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.coin_record import CoinRecord
-from chia.types.condition_with_args import ConditionWithArgs
-from chia.types.generator_types import BlockGenerator
-from chia.types.name_puzzle_condition import NPC
-from chia.util.clvm import int_from_bytes, int_to_bytes
-from chia.util.condition_tools import ConditionOpcode, conditions_by_opcode
-from chia.util.errors import Err, ValidationError
-from chia.util.ints import uint32, uint64, uint16
-from chia.wallet.puzzles.generator_loader import GENERATOR_FOR_SINGLE_COIN_MOD
-from chia.wallet.puzzles.rom_bootstrap_generator import get_generator
+from inan.consensus.cost_calculator import NPCResult
+from inan.consensus.condition_costs import ConditionCost
+from inan.full_node.generator import create_generator_args, setup_generator_args
+from inan.types.blockchain_format.coin import Coin
+from inan.types.blockchain_format.program import NIL
+from inan.types.blockchain_format.sized_bytes import bytes32
+from inan.types.coin_record import CoinRecord
+from inan.types.condition_with_args import ConditionWithArgs
+from inan.types.generator_types import BlockGenerator
+from inan.types.name_puzzle_condition import NPC
+from inan.util.clvm import int_from_bytes, int_to_bytes
+from inan.util.condition_tools import ConditionOpcode, conditions_by_opcode
+from inan.util.errors import Err, ValidationError
+from inan.util.ints import uint32, uint64, uint16
+from inan.wallet.puzzles.generator_loader import GENERATOR_FOR_SINGLE_COIN_MOD
+from inan.wallet.puzzles.rom_bootstrap_generator import get_generator
 
 GENERATOR_MOD = get_generator()
 

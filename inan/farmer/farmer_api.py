@@ -5,23 +5,23 @@ from typing import Callable, Optional, List, Any, Dict
 import aiohttp
 from blspy import AugSchemeMPL, G2Element, PrivateKey
 
-import chia.server.ws_connection as ws
-from chia.consensus.pot_iterations import calculate_iterations_quality, calculate_sp_interval_iters
-from chia.farmer.farmer import Farmer
-from chia.protocols import farmer_protocol, harvester_protocol
-from chia.protocols.harvester_protocol import PoolDifficulty
-from chia.protocols.pool_protocol import (
+import inan.server.ws_connection as ws
+from inan.consensus.pot_iterations import calculate_iterations_quality, calculate_sp_interval_iters
+from inan.farmer.farmer import Farmer
+from inan.protocols import farmer_protocol, harvester_protocol
+from inan.protocols.harvester_protocol import PoolDifficulty
+from inan.protocols.pool_protocol import (
     get_current_authentication_token,
     PoolErrorCode,
     PostPartialRequest,
     PostPartialPayload,
 )
-from chia.protocols.protocol_message_types import ProtocolMessageTypes
-from chia.server.outbound_message import NodeType, make_msg
-from chia.types.blockchain_format.pool_target import PoolTarget
-from chia.types.blockchain_format.proof_of_space import ProofOfSpace
-from chia.util.api_decorators import api_request, peer_required
-from chia.util.ints import uint32, uint64
+from inan.protocols.protocol_message_types import ProtocolMessageTypes
+from inan.server.outbound_message import NodeType, make_msg
+from inan.types.blockchain_format.pool_target import PoolTarget
+from inan.types.blockchain_format.proof_of_space import ProofOfSpace
+from inan.util.api_decorators import api_request, peer_required
+from inan.util.ints import uint32, uint64
 
 
 class FarmerAPI:
@@ -36,7 +36,7 @@ class FarmerAPI:
     @api_request
     @peer_required
     async def new_proof_of_space(
-        self, new_proof_of_space: harvester_protocol.NewProofOfSpace, peer: ws.WSChiaConnection
+        self, new_proof_of_space: harvester_protocol.NewProofOfSpace, peer: ws.WSInanConnection
     ):
         """
         This is a response from the harvester, for a NewChallenge. Here we check if the proof

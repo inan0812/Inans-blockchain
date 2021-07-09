@@ -7,27 +7,27 @@ from typing import Callable, List, Optional, Tuple
 
 import aiohttp
 
-from chia.cmds.units import units
-from chia.rpc.wallet_rpc_client import WalletRpcClient
-from chia.server.start_wallet import SERVICE_NAME
-from chia.util.bech32m import encode_puzzle_hash
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.config import load_config
-from chia.util.default_root import DEFAULT_ROOT_PATH
-from chia.util.ints import uint16, uint64
-from chia.wallet.transaction_record import TransactionRecord
-from chia.wallet.util.wallet_types import WalletType
+from inan.cmds.units import units
+from inan.rpc.wallet_rpc_client import WalletRpcClient
+from inan.server.start_wallet import SERVICE_NAME
+from inan.util.bech32m import encode_puzzle_hash
+from inan.util.byte_types import hexstr_to_bytes
+from inan.util.config import load_config
+from inan.util.default_root import DEFAULT_ROOT_PATH
+from inan.util.ints import uint16, uint64
+from inan.wallet.transaction_record import TransactionRecord
+from inan.wallet.util.wallet_types import WalletType
 
 
 def print_transaction(tx: TransactionRecord, verbose: bool, name) -> None:
     if verbose:
         print(tx)
     else:
-        chia_amount = Decimal(int(tx.amount)) / units["chia"]
+        inan_amount = Decimal(int(tx.amount)) / units["inan"]
         to_address = encode_puzzle_hash(tx.to_puzzle_hash, name)
         print(f"Transaction {tx.name}")
         print(f"Status: {'Confirmed' if tx.confirmed else ('In mempool' if tx.is_in_mempool() else 'Pending')}")
-        print(f"Amount: {chia_amount} {name}")
+        print(f"Amount: {inan_amount} {name}")
         print(f"To address: {to_address}")
         print("Created at:", datetime.fromtimestamp(tx.created_at_time).strftime("%Y-%m-%d %H:%M:%S"))
         print("")
@@ -86,8 +86,8 @@ async def send(args: dict, wallet_client: WalletRpcClient, fingerprint: int) -> 
         )
         return
     print("Submitting transaction...")
-    final_amount = uint64(int(amount * units["chia"]))
-    final_fee = uint64(int(fee * units["chia"]))
+    final_amount = uint64(int(amount * units["inan"]))
+    final_fee = uint64(int(fee * units["inan"]))
     res = await wallet_client.send_transaction(wallet_id, final_amount, address, final_fee)
     tx_id = res.name
     start = time.time()
@@ -96,11 +96,11 @@ async def send(args: dict, wallet_client: WalletRpcClient, fingerprint: int) -> 
         tx = await wallet_client.get_transaction(wallet_id, tx_id)
         if len(tx.sent_to) > 0:
             print(f"Transaction submitted to nodes: {tx.sent_to}")
-            print(f"Do chia wallet get_transaction -f {fingerprint} -tx 0x{tx_id} to get status")
+            print(f"Do inan wallet get_transaction -f {fingerprint} -tx 0x{tx_id} to get status")
             return None
 
     print("Transaction not yet submitted to nodes")
-    print(f"Do 'chia wallet get_transaction -f {fingerprint} -tx 0x{tx_id}' to get status")
+    print(f"Do 'inan wallet get_transaction -f {fingerprint} -tx 0x{tx_id}' to get status")
 
 
 async def get_address(args: dict, wallet_client: WalletRpcClient, fingerprint: int) -> None:
@@ -119,7 +119,7 @@ def wallet_coin_unit(typ: WalletType, address_prefix: str) -> Tuple[str, int]:
     if typ == WalletType.COLOURED_COIN:
         return "", units["colouredcoin"]
     if typ in [WalletType.STANDARD_WALLET, WalletType.POOLING_WALLET, WalletType.MULTI_SIG, WalletType.RATE_LIMITED]:
-        return address_prefix, units["chia"]
+        return address_prefix, units["inan"]
     return "", units["mojo"]
 
 
@@ -157,7 +157,7 @@ async def get_wallet(wallet_client: WalletRpcClient, fingerprint: int = None) ->
     else:
         fingerprints = await wallet_client.get_public_keys()
     if len(fingerprints) == 0:
-        print("No keys loaded. Run 'chia keys generate' or import a key")
+        print("No keys loaded. Run 'inan keys generate' or import a key")
         return None
     if len(fingerprints) == 1:
         fingerprint = fingerprints[0]
@@ -243,7 +243,7 @@ async def execute_with_wallet(wallet_rpc_port: int, fingerprint: int, extra_para
         if isinstance(e, aiohttp.ClientConnectorError):
             print(
                 f"Connection error. Check if the wallet is running at {wallet_rpc_port}. "
-                "You can run the wallet via:\n\tchia start wallet"
+                "You can run the wallet via:\n\tinan start wallet"
             )
         else:
             print(f"Exception from 'wallet' {e}")

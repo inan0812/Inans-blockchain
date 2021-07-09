@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import List
-from chia.types.blockchain_format.program import SerializedProgram
-from chia.util.ints import uint32
-from chia.util.streamable import Streamable, streamable
+from inan.types.blockchain_format.program import SerializedProgram
+from inan.util.ints import uint32
+from inan.util.streamable import Streamable, streamable
 
 
 class GeneratorBlockCacheInterface:

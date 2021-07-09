@@ -6,27 +6,27 @@ from concurrent.futures.process import ProcessPoolExecutor
 from enum import Enum
 from typing import Any, Callable, Dict, List, Optional, Set, Tuple
 
-from chia.consensus.block_header_validation import validate_finished_header_block, validate_unfinished_header_block
-from chia.consensus.block_record import BlockRecord
-from chia.consensus.blockchain_interface import BlockchainInterface
-from chia.consensus.constants import ConsensusConstants
-from chia.consensus.difficulty_adjustment import get_next_sub_slot_iters_and_difficulty
-from chia.consensus.find_fork_point import find_fork_point_in_chain
-from chia.consensus.full_block_to_block_record import block_to_block_record
-from chia.consensus.multiprocess_validation import PreValidationResult, pre_validate_blocks_multiprocessing
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from chia.types.coin_solution import CoinSolution
-from chia.types.header_block import HeaderBlock
-from chia.types.unfinished_header_block import UnfinishedHeaderBlock
-from chia.util.errors import Err, ValidationError
-from chia.util.ints import uint32, uint64
-from chia.util.streamable import recurse_jsonify
-from chia.wallet.block_record import HeaderBlockRecord
-from chia.wallet.wallet_block_store import WalletBlockStore
-from chia.wallet.wallet_coin_store import WalletCoinStore
-from chia.wallet.wallet_pool_store import WalletPoolStore
-from chia.wallet.wallet_transaction_store import WalletTransactionStore
+from inan.consensus.block_header_validation import validate_finished_header_block, validate_unfinished_header_block
+from inan.consensus.block_record import BlockRecord
+from inan.consensus.blockchain_interface import BlockchainInterface
+from inan.consensus.constants import ConsensusConstants
+from inan.consensus.difficulty_adjustment import get_next_sub_slot_iters_and_difficulty
+from inan.consensus.find_fork_point import find_fork_point_in_chain
+from inan.consensus.full_block_to_block_record import block_to_block_record
+from inan.consensus.multiprocess_validation import PreValidationResult, pre_validate_blocks_multiprocessing
+from inan.types.blockchain_format.sized_bytes import bytes32
+from inan.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from inan.types.coin_solution import CoinSolution
+from inan.types.header_block import HeaderBlock
+from inan.types.unfinished_header_block import UnfinishedHeaderBlock
+from inan.util.errors import Err, ValidationError
+from inan.util.ints import uint32, uint64
+from inan.util.streamable import recurse_jsonify
+from inan.wallet.block_record import HeaderBlockRecord
+from inan.wallet.wallet_block_store import WalletBlockStore
+from inan.wallet.wallet_coin_store import WalletCoinStore
+from inan.wallet.wallet_pool_store import WalletPoolStore
+from inan.wallet.wallet_transaction_store import WalletTransactionStore
 
 log = logging.getLogger(__name__)
 

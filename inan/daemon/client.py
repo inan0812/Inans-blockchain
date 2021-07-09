@@ -6,11 +6,11 @@ from typing import Any, Dict, Optional
 
 import websockets
 
-from chia.server.server import ssl_context_for_client
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.config import load_config
-from chia.util.json_util import dict_to_json_str
-from chia.util.ws_message import WsRpcMessage, create_payload_dict
+from inan.server.server import ssl_context_for_client
+from inan.types.blockchain_format.sized_bytes import bytes32
+from inan.util.config import load_config
+from inan.util.json_util import dict_to_json_str
+from inan.util.ws_message import WsRpcMessage, create_payload_dict
 
 
 class DaemonProxy:

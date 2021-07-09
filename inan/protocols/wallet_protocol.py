@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.program import Program
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.header_block import HeaderBlock
-from chia.types.spend_bundle import SpendBundle
-from chia.util.ints import uint8, uint32, uint128
-from chia.util.streamable import Streamable, streamable
+from inan.types.blockchain_format.coin import Coin
+from inan.types.blockchain_format.program import Program
+from inan.types.blockchain_format.sized_bytes import bytes32
+from inan.types.header_block import HeaderBlock
+from inan.types.spend_bundle import SpendBundle
+from inan.util.ints import uint8, uint32, uint128
+from inan.util.streamable import Streamable, streamable
 
 """
 Protocol between wallet (SPV node) and full node.

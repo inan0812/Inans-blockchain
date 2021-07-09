@@ -4,13 +4,13 @@ from typing import Optional
 
 from bitstring import BitArray
 from blspy import G1Element, AugSchemeMPL, PrivateKey
-from chiapos import Verifier
+from inanpos import Verifier
 
-from chia.consensus.constants import ConsensusConstants
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.hash import std_hash
-from chia.util.ints import uint8
-from chia.util.streamable import Streamable, streamable
+from inan.consensus.constants import ConsensusConstants
+from inan.types.blockchain_format.sized_bytes import bytes32
+from inan.util.hash import std_hash
+from inan.util.ints import uint8
+from inan.util.streamable import Streamable, streamable
 
 log = logging.getLogger(__name__)
 

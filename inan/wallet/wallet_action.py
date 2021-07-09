@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from chia.util.ints import uint32
-from chia.wallet.util.wallet_types import WalletType
+from inan.util.ints import uint32
+from inan.wallet.util.wallet_types import WalletType
 
 
 @dataclass(frozen=True)

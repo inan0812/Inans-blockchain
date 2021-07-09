@@ -9,14 +9,14 @@ from typing import Callable, Dict, List, Optional, Set, Tuple, Union, Any
 
 from blspy import PrivateKey
 
-from chia.consensus.block_record import BlockRecord
-from chia.consensus.constants import ConsensusConstants
-from chia.consensus.multiprocess_validation import PreValidationResult
-from chia.pools.pool_puzzles import SINGLETON_LAUNCHER_HASH
-from chia.protocols import wallet_protocol
-from chia.protocols.full_node_protocol import RequestProofOfWeight, RespondProofOfWeight
-from chia.protocols.protocol_message_types import ProtocolMessageTypes
-from chia.protocols.wallet_protocol import (
+from inan.consensus.block_record import BlockRecord
+from inan.consensus.constants import ConsensusConstants
+from inan.consensus.multiprocess_validation import PreValidationResult
+from inan.pools.pool_puzzles import SINGLETON_LAUNCHER_HASH
+from inan.protocols import wallet_protocol
+from inan.protocols.full_node_protocol import RequestProofOfWeight, RespondProofOfWeight
+from inan.protocols.protocol_message_types import ProtocolMessageTypes
+from inan.protocols.wallet_protocol import (
     RejectAdditionsRequest,
     RejectRemovalsRequest,
     RequestAdditions,
@@ -26,40 +26,40 @@ from chia.protocols.wallet_protocol import (
     RespondHeaderBlocks,
     RespondRemovals,
 )
-from chia.server.node_discovery import WalletPeers
-from chia.server.outbound_message import Message, NodeType, make_msg
-from chia.server.server import ChiaServer
-from chia.server.ws_connection import WSChiaConnection
-from chia.types.blockchain_format.coin import Coin, hash_coin_list
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.coin_solution import CoinSolution
-from chia.types.header_block import HeaderBlock
-from chia.types.mempool_inclusion_status import MempoolInclusionStatus
-from chia.types.peer_info import PeerInfo
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.errors import Err, ValidationError
-from chia.util.ints import uint32, uint128
-from chia.util.keychain import Keychain
-from chia.util.lru_cache import LRUCache
-from chia.util.merkle_set import MerkleSet, confirm_included_already_hashed, confirm_not_included_already_hashed
-from chia.util.path import mkdir, path_from_root
-from chia.wallet.block_record import HeaderBlockRecord
-from chia.wallet.derivation_record import DerivationRecord
-from chia.wallet.settings.settings_objects import BackupInitialized
-from chia.wallet.transaction_record import TransactionRecord
-from chia.wallet.util.backup_utils import open_backup_file
-from chia.wallet.util.wallet_types import WalletType
-from chia.wallet.wallet_action import WalletAction
-from chia.wallet.wallet_blockchain import ReceiveBlockResult
-from chia.wallet.wallet_state_manager import WalletStateManager
-from chia.util.profiler import profile_task
+from inan.server.node_discovery import WalletPeers
+from inan.server.outbound_message import Message, NodeType, make_msg
+from inan.server.server import InanServer
+from inan.server.ws_connection import WSInanConnection
+from inan.types.blockchain_format.coin import Coin, hash_coin_list
+from inan.types.blockchain_format.sized_bytes import bytes32
+from inan.types.coin_solution import CoinSolution
+from inan.types.header_block import HeaderBlock
+from inan.types.mempool_inclusion_status import MempoolInclusionStatus
+from inan.types.peer_info import PeerInfo
+from inan.util.byte_types import hexstr_to_bytes
+from inan.util.errors import Err, ValidationError
+from inan.util.ints import uint32, uint128
+from inan.util.keychain import Keychain
+from inan.util.lru_cache import LRUCache
+from inan.util.merkle_set import MerkleSet, confirm_included_already_hashed, confirm_not_included_already_hashed
+from inan.util.path import mkdir, path_from_root
+from inan.wallet.block_record import HeaderBlockRecord
+from inan.wallet.derivation_record import DerivationRecord
+from inan.wallet.settings.settings_objects import BackupInitialized
+from inan.wallet.transaction_record import TransactionRecord
+from inan.wallet.util.backup_utils import open_backup_file
+from inan.wallet.util.wallet_types import WalletType
+from inan.wallet.wallet_action import WalletAction
+from inan.wallet.wallet_blockchain import ReceiveBlockResult
+from inan.wallet.wallet_state_manager import WalletStateManager
+from inan.util.profiler import profile_task
 
 
 class WalletNode:
     key_config: Dict
     config: Dict
     constants: ConsensusConstants
-    server: Optional[ChiaServer]
+    server: Optional[InanServer]
     log: logging.Logger
     wallet_peers: WalletPeers
     # Maintains the state of the wallet (blockchain and transactions), handles DB connections
@@ -118,7 +118,7 @@ class WalletNode:
     def get_key_for_fingerprint(self, fingerprint: Optional[int]) -> Optional[PrivateKey]:
         private_keys = self.keychain.get_all_private_keys()
         if len(private_keys) == 0:
-            self.log.warning("No keys present. Create keys with the UI, or with the 'chia keys' program.")
+            self.log.warning("No keys present. Create keys with the UI, or with the 'inan keys' program.")
             return None
 
         private_key: Optional[PrivateKey] = None
@@ -319,7 +319,7 @@ class WalletNode:
 
         return messages
 
-    def set_server(self, server: ChiaServer):
+    def set_server(self, server: InanServer):
         self.server = server
         DNS_SERVERS_EMPTY: list = []
         # TODO: Perhaps use a different set of DNS seeders for wallets, to split the traffic.
@@ -336,7 +336,7 @@ class WalletNode:
             self.log,
         )
 
-    async def on_connect(self, peer: WSChiaConnection):
+    async def on_connect(self, peer: WSInanConnection):
         if self.wallet_state_manager is None or self.backup_initialized is False:
             return None
         messages_peer_ids = await self._messages_to_resend()
@@ -381,7 +381,7 @@ class WalletNode:
                 return True
         return False
 
-    async def complete_blocks(self, header_blocks: List[HeaderBlock], peer: WSChiaConnection):
+    async def complete_blocks(self, header_blocks: List[HeaderBlock], peer: WSInanConnection):
         if self.wallet_state_manager is None:
             return None
         header_block_records: List[HeaderBlockRecord] = []
@@ -431,7 +431,7 @@ class WalletNode:
                 else:
                     self.log.debug(f"Result: {result}")
 
-    async def new_peak_wallet(self, peak: wallet_protocol.NewPeakWallet, peer: WSChiaConnection):
+    async def new_peak_wallet(self, peak: wallet_protocol.NewPeakWallet, peer: WSInanConnection):
         if self.wallet_state_manager is None:
             return
 
@@ -619,7 +619,7 @@ class WalletNode:
             self.log.info("Not performing sync, already caught up.")
             return None
 
-        peers: List[WSChiaConnection] = self.server.get_full_node_connections()
+        peers: List[WSInanConnection] = self.server.get_full_node_connections()
         if len(peers) == 0:
             self.log.info("No peers to sync to")
             return None
@@ -662,7 +662,7 @@ class WalletNode:
 
     async def fetch_blocks_and_validate(
         self,
-        peer: WSChiaConnection,
+        peer: WSInanConnection,
         height_start: uint32,
         height_end: uint32,
         fork_point_with_peak: Optional[uint32],
@@ -915,7 +915,7 @@ class WalletNode:
         return additional_coin_spends
 
     async def get_additions(
-        self, peer: WSChiaConnection, block_i, additions: Optional[List[bytes32]], get_all_additions: bool = False
+        self, peer: WSInanConnection, block_i, additions: Optional[List[bytes32]], get_all_additions: bool = False
     ) -> Optional[List[Coin]]:
         if (additions is not None and len(additions) > 0) or get_all_additions:
             if get_all_additions:
@@ -949,7 +949,7 @@ class WalletNode:
             return []  # No added coins
 
     async def get_removals(
-        self, peer: WSChiaConnection, block_i, additions, removals, request_all_removals=False
+        self, peer: WSInanConnection, block_i, additions, removals, request_all_removals=False
     ) -> Optional[List[Coin]]:
         assert self.wallet_state_manager is not None
         # Check if we need all removals

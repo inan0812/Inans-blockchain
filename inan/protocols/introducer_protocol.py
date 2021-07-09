@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import List
 
-from chia.types.peer_info import TimestampedPeerInfo
-from chia.util.streamable import Streamable, streamable
+from inan.types.peer_info import TimestampedPeerInfo
+from inan.util.streamable import Streamable, streamable
 
 """
 Protocol to introducer

@@ -4,24 +4,24 @@ from secrets import token_bytes
 
 import pytest
 from blspy import AugSchemeMPL
-from chiapos import DiskPlotter
+from inanpos import DiskPlotter
 
-from chia.consensus.coinbase import create_puzzlehash_for_pk
-from chia.plotting.plot_tools import stream_plot_info_ph, stream_plot_info_pk
-from chia.protocols import farmer_protocol
-from chia.rpc.farmer_rpc_api import FarmerRpcApi
-from chia.rpc.farmer_rpc_client import FarmerRpcClient
-from chia.rpc.harvester_rpc_api import HarvesterRpcApi
-from chia.rpc.harvester_rpc_client import HarvesterRpcClient
-from chia.rpc.rpc_server import start_rpc_server
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
+from inan.consensus.coinbase import create_puzzlehash_for_pk
+from inan.plotting.plot_tools import stream_plot_info_ph, stream_plot_info_pk
+from inan.protocols import farmer_protocol
+from inan.rpc.farmer_rpc_api import FarmerRpcApi
+from inan.rpc.farmer_rpc_client import FarmerRpcClient
+from inan.rpc.harvester_rpc_api import HarvesterRpcApi
+from inan.rpc.harvester_rpc_client import HarvesterRpcClient
+from inan.rpc.rpc_server import start_rpc_server
+from inan.types.blockchain_format.sized_bytes import bytes32
+from inan.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
 from tests.block_tools import get_plot_dir
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.config import load_config, save_config
-from chia.util.hash import std_hash
-from chia.util.ints import uint8, uint16, uint32, uint64
-from chia.wallet.derive_keys import master_sk_to_wallet_sk, master_sk_to_pooling_authentication_sk
+from inan.util.byte_types import hexstr_to_bytes
+from inan.util.config import load_config, save_config
+from inan.util.hash import std_hash
+from inan.util.ints import uint8, uint16, uint32, uint64
+from inan.wallet.derive_keys import master_sk_to_wallet_sk, master_sk_to_pooling_authentication_sk
 from tests.setup_nodes import bt, self_hostname, setup_farmer_harvester, test_constants
 from tests.time_out_assert import time_out_assert
 

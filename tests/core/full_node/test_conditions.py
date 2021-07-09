@@ -14,18 +14,18 @@ from blspy import G2Element
 
 from clvm_tools.binutils import assemble
 
-from chia.consensus.blockchain import ReceiveBlockResult
-from chia.consensus.constants import ConsensusConstants
-from chia.types.announcement import Announcement
-from chia.types.blockchain_format.program import Program
-from chia.types.coin_record import CoinRecord
-from chia.types.coin_solution import CoinSolution
-from chia.types.condition_opcodes import ConditionOpcode
-from chia.types.full_block import FullBlock
-from chia.types.spend_bundle import SpendBundle
+from inan.consensus.blockchain import ReceiveBlockResult
+from inan.consensus.constants import ConsensusConstants
+from inan.types.announcement import Announcement
+from inan.types.blockchain_format.program import Program
+from inan.types.coin_record import CoinRecord
+from inan.types.coin_solution import CoinSolution
+from inan.types.condition_opcodes import ConditionOpcode
+from inan.types.full_block import FullBlock
+from inan.types.spend_bundle import SpendBundle
 from tests.block_tools import BlockTools, test_constants
-from chia.util.errors import Err
-from chia.util.ints import uint32
+from inan.util.errors import Err
+from inan.util.ints import uint32
 
 from .ram_db import create_ram_blockchain
 

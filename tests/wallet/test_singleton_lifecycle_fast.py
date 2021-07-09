@@ -4,15 +4,15 @@ from typing import Any, Callable, Dict, List, Optional, Tuple
 from blspy import G1Element, G2Element
 from clvm_tools import binutils
 
-from chia.types.blockchain_format.program import Program, SerializedProgram
-from chia.types.announcement import Announcement
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.coin_solution import CoinSolution as CoinSpend
-from chia.types.spend_bundle import SpendBundle
-from chia.util.condition_tools import ConditionOpcode
-from chia.util.ints import uint64
-from chia.wallet.puzzles.load_clvm import load_clvm
+from inan.types.blockchain_format.program import Program, SerializedProgram
+from inan.types.announcement import Announcement
+from inan.types.blockchain_format.coin import Coin
+from inan.types.blockchain_format.sized_bytes import bytes32
+from inan.types.coin_solution import CoinSolution as CoinSpend
+from inan.types.spend_bundle import SpendBundle
+from inan.util.condition_tools import ConditionOpcode
+from inan.util.ints import uint64
+from inan.wallet.puzzles.load_clvm import load_clvm
 
 from tests.clvm.coin_store import BadSpendBundleError, CoinStore, CoinTimestamp
 

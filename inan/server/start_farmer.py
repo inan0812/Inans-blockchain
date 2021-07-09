@@ -1,17 +1,17 @@
 import pathlib
 from typing import Dict
 
-from chia.consensus.constants import ConsensusConstants
-from chia.consensus.default_constants import DEFAULT_CONSTANTS
-from chia.farmer.farmer import Farmer
-from chia.farmer.farmer_api import FarmerAPI
-from chia.rpc.farmer_rpc_api import FarmerRpcApi
-from chia.server.outbound_message import NodeType
-from chia.server.start_service import run_service
-from chia.types.peer_info import PeerInfo
-from chia.util.config import load_config_cli
-from chia.util.default_root import DEFAULT_ROOT_PATH
-from chia.util.keychain import Keychain
+from inan.consensus.constants import ConsensusConstants
+from inan.consensus.default_constants import DEFAULT_CONSTANTS
+from inan.farmer.farmer import Farmer
+from inan.farmer.farmer_api import FarmerAPI
+from inan.rpc.farmer_rpc_api import FarmerRpcApi
+from inan.server.outbound_message import NodeType
+from inan.server.start_service import run_service
+from inan.types.peer_info import PeerInfo
+from inan.util.config import load_config_cli
+from inan.util.default_root import DEFAULT_ROOT_PATH
+from inan.util.keychain import Keychain
 
 # See: https://bugs.python.org/issue29288
 "".encode("idna")

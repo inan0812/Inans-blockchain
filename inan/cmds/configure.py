@@ -3,8 +3,8 @@ from typing import Dict
 
 import click
 
-from chia.util.config import load_config, save_config, str2bool
-from chia.util.default_root import DEFAULT_ROOT_PATH
+from inan.util.config import load_config, save_config, str2bool
+from inan.util.default_root import DEFAULT_ROOT_PATH
 
 
 def configure(
@@ -136,7 +136,7 @@ def configure(
             print("Please choose True or False")
 
     if change_made:
-        print("Restart any running chia services for changes to take effect")
+        print("Restart any running inan services for changes to take effect")
         save_config(root_path, "config.yaml", config)
     return 0
 

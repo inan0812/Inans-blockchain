@@ -1,12 +1,12 @@
 from typing import Tuple
 
-from chiavdf import prove
+from inanvdf import prove
 
-from chia.consensus.constants import ConsensusConstants
-from chia.types.blockchain_format.classgroup import ClassgroupElement
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.vdf import VDFInfo, VDFProof
-from chia.util.ints import uint8, uint64
+from inan.consensus.constants import ConsensusConstants
+from inan.types.blockchain_format.classgroup import ClassgroupElement
+from inan.types.blockchain_format.sized_bytes import bytes32
+from inan.types.blockchain_format.vdf import VDFInfo, VDFProof
+from inan.util.ints import uint8, uint64
 
 
 def get_vdf_info_and_proof(

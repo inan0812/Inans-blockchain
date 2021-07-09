@@ -23,8 +23,8 @@ def private_ssl_ca_paths(path: Path, config: Dict):
     )
 
 
-def chia_ssl_ca_paths(path: Path, config: Dict):
+def inan_ssl_ca_paths(path: Path, config: Dict):
     return (
-        path / config["chia_ssl_ca"]["crt"],
-        path / config["chia_ssl_ca"]["key"],
+        path / config["inan_ssl_ca"]["crt"],
+        path / config["inan_ssl_ca"]["key"],
     )

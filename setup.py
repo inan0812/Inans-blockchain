@@ -2,9 +2,9 @@ from setuptools import setup
 
 dependencies = [
     "blspy==1.0.2",  # Signature library
-    "chiavdf==1.0.2",  # timelord and vdf verification
-    "chiabip158==1.0",  # bip158-style wallet filters
-    "chiapos==1.0.3",  # proof of space
+    "inanvdf==1.0.2",  # timelord and vdf verification
+    "inanbip158==1.0",  # bip158-style wallet filters
+    "inanpos==1.0.3",  # proof of space
     "clvm==0.9.7",
     "clvm_rs==0.1.8",
     "clvm_tools==0.4.3",
@@ -19,7 +19,7 @@ dependencies = [
     #  "keyrings.cryptfile==1.3.8",  # Secure storage for keys on Linux (Will be replaced)
     #  See https://github.com/frispete/keyrings.cryptfile/issues/15
     "PyYAML==5.4.1",  # Used for config file format
-    "setproctitle==1.2.2",  # Gives the chia processes readable names
+    "setproctitle==1.2.2",  # Gives the inan processes readable names
     "sortedcontainers==2.3.0",  # For maintaining sorted mempools
     "websockets==8.1.0",  # For use in wallet RPC and electron UI
     "click==7.1.2",  # For the CLI
@@ -41,14 +41,14 @@ dev_dependencies = [
 ]
 
 kwargs = dict(
-    name="chia-blockchain",
+    name="inan-blockchain",
     author="Mariano Sorgente",
     author_email="mariano@chia.net",
-    description="Chia blockchain full node, farmer, timelord, and wallet.",
+    description="Inan blockchain full node, farmer, timelord, and wallet.",
     url="https://chia.net/",
     license="Apache License",
     python_requires=">=3.7, <4",
-    keywords="chia blockchain node",
+    keywords="inan blockchain node",
     install_requires=dependencies,
     setup_requires=["setuptools_scm"],
     extras_require=dict(
@@ -58,54 +58,54 @@ kwargs = dict(
     ),
     packages=[
         "build_scripts",
-        "chia",
-        "chia.cmds",
-        "chia.clvm",
-        "chia.consensus",
-        "chia.daemon",
-        "chia.full_node",
-        "chia.timelord",
-        "chia.farmer",
-        "chia.harvester",
-        "chia.introducer",
-        "chia.plotting",
-        "chia.pools",
-        "chia.protocols",
-        "chia.rpc",
-        "chia.server",
-        "chia.simulator",
-        "chia.types.blockchain_format",
-        "chia.types",
-        "chia.util",
-        "chia.wallet",
-        "chia.wallet.puzzles",
-        "chia.wallet.rl_wallet",
-        "chia.wallet.cc_wallet",
-        "chia.wallet.did_wallet",
-        "chia.wallet.settings",
-        "chia.wallet.trading",
-        "chia.wallet.util",
-        "chia.ssl",
+        "inan",
+        "inan.cmds",
+        "inan.clvm",
+        "inan.consensus",
+        "inan.daemon",
+        "inan.full_node",
+        "inan.timelord",
+        "inan.farmer",
+        "inan.harvester",
+        "inan.introducer",
+        "inan.plotting",
+        "inan.pools",
+        "inan.protocols",
+        "inan.rpc",
+        "inan.server",
+        "inan.simulator",
+        "inan.types.blockchain_format",
+        "inan.types",
+        "inan.util",
+        "inan.wallet",
+        "inan.wallet.puzzles",
+        "inan.wallet.rl_wallet",
+        "inan.wallet.cc_wallet",
+        "inan.wallet.did_wallet",
+        "inan.wallet.settings",
+        "inan.wallet.trading",
+        "inan.wallet.util",
+        "inan.ssl",
         "mozilla-ca",
     ],
     entry_points={
         "console_scripts": [
-            "chia = chia.cmds.chia:main",
-            "chia_wallet = chia.server.start_wallet:main",
-            "chia_full_node = chia.server.start_full_node:main",
-            "chia_harvester = chia.server.start_harvester:main",
-            "chia_farmer = chia.server.start_farmer:main",
-            "chia_introducer = chia.server.start_introducer:main",
-            "chia_timelord = chia.server.start_timelord:main",
-            "chia_timelord_launcher = chia.timelord.timelord_launcher:main",
-            "chia_full_node_simulator = chia.simulator.start_simulator:main",
+            "inan = inan.cmds.inan:main",
+            "inan_wallet = inan.server.start_wallet:main",
+            "inan_full_node = inan.server.start_full_node:main",
+            "inan_harvester = inan.server.start_harvester:main",
+            "inan_farmer = inan.server.start_farmer:main",
+            "inan_introducer = inan.server.start_introducer:main",
+            "inan_timelord = inan.server.start_timelord:main",
+            "inan_timelord_launcher = inan.timelord.timelord_launcher:main",
+            "inan_full_node_simulator = inan.simulator.start_simulator:main",
         ]
     },
     package_data={
-        "chia": ["pyinstaller.spec"],
-        "chia.wallet.puzzles": ["*.clvm", "*.clvm.hex"],
-        "chia.util": ["initial-*.yaml", "english.txt"],
-        "chia.ssl": ["chia_ca.crt", "chia_ca.key", "dst_root_ca.pem"],
+        "inan": ["pyinstaller.spec"],
+        "inan.wallet.puzzles": ["*.clvm", "*.clvm.hex"],
+        "inan.util": ["initial-*.yaml", "english.txt"],
+        "inan.ssl": ["inan_ca.crt", "inan_ca.key", "dst_root_ca.pem"],
         "mozilla-ca": ["cacert.pem"],
     },
     use_scm_version={"fallback_version": "unknown-no-.git-directory"},

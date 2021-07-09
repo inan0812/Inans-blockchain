@@ -10,30 +10,30 @@ import pytest
 from blspy import AugSchemeMPL, G2Element
 from clvm.casts import int_to_bytes
 
-from chia.consensus.block_rewards import calculate_base_farmer_reward
-from chia.consensus.blockchain import ReceiveBlockResult
-from chia.consensus.coinbase import create_farmer_coin
-from chia.consensus.pot_iterations import is_overflow_block
-from chia.full_node.bundle_tools import detect_potential_template_generator
-from chia.types.blockchain_format.classgroup import ClassgroupElement
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.foliage import TransactionsInfo
-from chia.types.blockchain_format.program import SerializedProgram
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.slots import InfusedChallengeChainSubSlot
-from chia.types.blockchain_format.vdf import VDFInfo, VDFProof
-from chia.types.condition_opcodes import ConditionOpcode
-from chia.types.condition_with_args import ConditionWithArgs
-from chia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from chia.types.full_block import FullBlock
-from chia.types.spend_bundle import SpendBundle
-from chia.types.unfinished_block import UnfinishedBlock
+from inan.consensus.block_rewards import calculate_base_farmer_reward
+from inan.consensus.blockchain import ReceiveBlockResult
+from inan.consensus.coinbase import create_farmer_coin
+from inan.consensus.pot_iterations import is_overflow_block
+from inan.full_node.bundle_tools import detect_potential_template_generator
+from inan.types.blockchain_format.classgroup import ClassgroupElement
+from inan.types.blockchain_format.coin import Coin
+from inan.types.blockchain_format.foliage import TransactionsInfo
+from inan.types.blockchain_format.program import SerializedProgram
+from inan.types.blockchain_format.sized_bytes import bytes32
+from inan.types.blockchain_format.slots import InfusedChallengeChainSubSlot
+from inan.types.blockchain_format.vdf import VDFInfo, VDFProof
+from inan.types.condition_opcodes import ConditionOpcode
+from inan.types.condition_with_args import ConditionWithArgs
+from inan.types.end_of_slot_bundle import EndOfSubSlotBundle
+from inan.types.full_block import FullBlock
+from inan.types.spend_bundle import SpendBundle
+from inan.types.unfinished_block import UnfinishedBlock
 from tests.block_tools import BlockTools, get_vdf_info_and_proof
-from chia.util.errors import Err
-from chia.util.hash import std_hash
-from chia.util.ints import uint8, uint64, uint32
-from chia.util.merkle_set import MerkleSet
-from chia.util.recursive_replace import recursive_replace
+from inan.util.errors import Err
+from inan.util.hash import std_hash
+from inan.util.ints import uint8, uint64, uint32
+from inan.util.merkle_set import MerkleSet
+from inan.util.recursive_replace import recursive_replace
 from tests.wallet_tools import WalletTool
 from tests.core.fixtures import default_400_blocks  # noqa: F401; noqa: F401
 from tests.core.fixtures import default_1000_blocks  # noqa: F401

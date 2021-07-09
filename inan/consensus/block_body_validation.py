@@ -3,42 +3,42 @@ import logging
 from typing import Dict, List, Optional, Set, Tuple, Union, Callable
 
 from blspy import AugSchemeMPL, G1Element
-from chiabip158 import PyBIP158
+from inanbip158 import PyBIP158
 from clvm.casts import int_from_bytes
 
-from chia.consensus.block_record import BlockRecord
-from chia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from chia.consensus.block_root_validation import validate_block_merkle_roots
-from chia.full_node.mempool_check_conditions import mempool_check_conditions_dict
-from chia.consensus.blockchain_interface import BlockchainInterface
-from chia.consensus.coinbase import create_farmer_coin, create_pool_coin
-from chia.consensus.constants import ConsensusConstants
-from chia.consensus.cost_calculator import NPCResult, calculate_cost_of_program
-from chia.consensus.find_fork_point import find_fork_point_in_chain
-from chia.full_node.block_store import BlockStore
-from chia.full_node.coin_store import CoinStore
-from chia.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.coin_record import CoinRecord
-from chia.types.condition_opcodes import ConditionOpcode
-from chia.types.condition_with_args import ConditionWithArgs
-from chia.types.full_block import FullBlock
-from chia.types.generator_types import BlockGenerator
-from chia.types.name_puzzle_condition import NPC
-from chia.types.unfinished_block import UnfinishedBlock
-from chia.util.condition_tools import (
+from inan.consensus.block_record import BlockRecord
+from inan.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from inan.consensus.block_root_validation import validate_block_merkle_roots
+from inan.full_node.mempool_check_conditions import mempool_check_conditions_dict
+from inan.consensus.blockchain_interface import BlockchainInterface
+from inan.consensus.coinbase import create_farmer_coin, create_pool_coin
+from inan.consensus.constants import ConsensusConstants
+from inan.consensus.cost_calculator import NPCResult, calculate_cost_of_program
+from inan.consensus.find_fork_point import find_fork_point_in_chain
+from inan.full_node.block_store import BlockStore
+from inan.full_node.coin_store import CoinStore
+from inan.full_node.mempool_check_conditions import get_name_puzzle_conditions
+from inan.types.blockchain_format.coin import Coin
+from inan.types.blockchain_format.sized_bytes import bytes32
+from inan.types.coin_record import CoinRecord
+from inan.types.condition_opcodes import ConditionOpcode
+from inan.types.condition_with_args import ConditionWithArgs
+from inan.types.full_block import FullBlock
+from inan.types.generator_types import BlockGenerator
+from inan.types.name_puzzle_condition import NPC
+from inan.types.unfinished_block import UnfinishedBlock
+from inan.util.condition_tools import (
     pkm_pairs_for_conditions_dict,
     coin_announcements_names_for_npc,
     puzzle_announcements_names_for_npc,
 )
-from chia.util.errors import Err
-from chia.util.generator_tools import (
+from inan.util.errors import Err
+from inan.util.generator_tools import (
     additions_for_npc,
     tx_removals_and_additions,
 )
-from chia.util.hash import std_hash
-from chia.util.ints import uint32, uint64, uint128
+from inan.util.hash import std_hash
+from inan.util.ints import uint32, uint64, uint128
 
 log = logging.getLogger(__name__)
 

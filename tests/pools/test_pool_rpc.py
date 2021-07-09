@@ -8,27 +8,27 @@ from typing import Optional, List, Dict
 import pytest
 from blspy import G1Element, AugSchemeMPL
 
-from chia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from chia.plotting.create_plots import create_plots
-from chia.pools.pool_wallet_info import PoolWalletInfo, PoolSingletonState
-from chia.protocols import full_node_protocol
-from chia.protocols.full_node_protocol import RespondBlock
-from chia.rpc.rpc_server import start_rpc_server
-from chia.rpc.wallet_rpc_api import WalletRpcApi
-from chia.rpc.wallet_rpc_client import WalletRpcClient
-from chia.simulator.simulator_protocol import FarmNewBlockProtocol, ReorgProtocol
-from chia.types.blockchain_format.proof_of_space import ProofOfSpace
-from chia.types.blockchain_format.sized_bytes import bytes32
+from inan.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from inan.plotting.create_plots import create_plots
+from inan.pools.pool_wallet_info import PoolWalletInfo, PoolSingletonState
+from inan.protocols import full_node_protocol
+from inan.protocols.full_node_protocol import RespondBlock
+from inan.rpc.rpc_server import start_rpc_server
+from inan.rpc.wallet_rpc_api import WalletRpcApi
+from inan.rpc.wallet_rpc_client import WalletRpcClient
+from inan.simulator.simulator_protocol import FarmNewBlockProtocol, ReorgProtocol
+from inan.types.blockchain_format.proof_of_space import ProofOfSpace
+from inan.types.blockchain_format.sized_bytes import bytes32
 
-from chia.types.peer_info import PeerInfo
-from chia.util.bech32m import encode_puzzle_hash
+from inan.types.peer_info import PeerInfo
+from inan.util.bech32m import encode_puzzle_hash
 from tests.block_tools import get_plot_dir, get_plot_tmp_dir
-from chia.util.config import load_config
-from chia.util.hash import std_hash
-from chia.util.ints import uint16, uint32
-from chia.wallet.derive_keys import master_sk_to_local_sk
-from chia.wallet.transaction_record import TransactionRecord
-from chia.wallet.util.wallet_types import WalletType
+from inan.util.config import load_config
+from inan.util.hash import std_hash
+from inan.util.ints import uint16, uint32
+from inan.wallet.derive_keys import master_sk_to_local_sk
+from inan.wallet.transaction_record import TransactionRecord
+from inan.wallet.util.wallet_types import WalletType
 from tests.setup_nodes import self_hostname, setup_simulators_and_wallets, bt
 from tests.time_out_assert import time_out_assert
 
@@ -669,11 +669,11 @@ class TestPoolWalletRpc:
                 if WalletType(int(summary["type"])) == WalletType.POOLING_WALLET:
                     assert False
 
-            async def have_chia():
+            async def have_inan():
                 await self.farm_blocks(full_node_api, our_ph, 1)
                 return (await wallets[0].get_confirmed_balance()) > 0
 
-            await time_out_assert(timeout=WAIT_SECS, function=have_chia)
+            await time_out_assert(timeout=WAIT_SECS, function=have_inan)
 
             creation_tx: TransactionRecord = await client.create_new_pool_wallet(
                 our_ph, "", 0, "localhost:5000", "new", "SELF_POOLING"
@@ -781,11 +781,11 @@ class TestPoolWalletRpc:
                 if WalletType(int(summary["type"])) == WalletType.POOLING_WALLET:
                     assert False
 
-            async def have_chia():
+            async def have_inan():
                 await self.farm_blocks(full_node_api, our_ph, 1)
                 return (await wallets[0].get_confirmed_balance()) > 0
 
-            await time_out_assert(timeout=WAIT_SECS, function=have_chia)
+            await time_out_assert(timeout=WAIT_SECS, function=have_inan)
 
             creation_tx: TransactionRecord = await client.create_new_pool_wallet(
                 pool_a_ph, "https://pool-a.org", 5, "localhost:5000", "new", "FARMING_TO_POOL"
@@ -868,11 +868,11 @@ class TestPoolWalletRpc:
                 if WalletType(int(summary["type"])) == WalletType.POOLING_WALLET:
                     assert False
 
-            async def have_chia():
+            async def have_inan():
                 await self.farm_blocks(full_node_api, our_ph, 1)
                 return (await wallets[0].get_confirmed_balance()) > 0
 
-            await time_out_assert(timeout=WAIT_SECS, function=have_chia)
+            await time_out_assert(timeout=WAIT_SECS, function=have_inan)
 
             creation_tx: TransactionRecord = await client.create_new_pool_wallet(
                 pool_a_ph, "https://pool-a.org", 5, "localhost:5000", "new", "FARMING_TO_POOL"
