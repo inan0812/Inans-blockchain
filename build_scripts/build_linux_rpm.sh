@@ -6,10 +6,10 @@ if [ ! "$1" ]; then
 elif [ "$1" = "amd64" ]; then
 	#PLATFORM="$1"
 	REDHAT_PLATFORM="x86_64"
-	DIR_NAME="inan-blockchain-linux-x64"
+	DIR_NAME="Inans-blockchain-linux-x64"
 else
 	#PLATFORM="$1"
-	DIR_NAME="inan-blockchain-linux-arm64"
+	DIR_NAME="Inans-blockchain-linux-arm64"
 fi
 
 pip install setuptools_scm
@@ -56,7 +56,7 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	exit $LAST_EXIT_CODE
 fi
 
-electron-packager . inan-blockchain --asar.unpack="**/daemon/**" --platform=linux \
+electron-packager . Inans-blockchain --asar.unpack="**/daemon/**" --platform=linux \
 --icon=src/assets/img/Inan.icns --overwrite --app-bundle-id=net.inan.blockchain \
 --appVersion=$INAN_INSTALLER_VERSION
 LAST_EXIT_CODE=$?
@@ -69,7 +69,7 @@ mv $DIR_NAME ../build_scripts/dist/
 cd ../build_scripts || exit
 
 if [ "$REDHAT_PLATFORM" = "x86_64" ]; then
-	echo "Create inan-blockchain-$INAN_INSTALLER_VERSION.rpm"
+	echo "Create Inans-blockchain-$INAN_INSTALLER_VERSION.rpm"
   electron-installer-redhat --src dist/$DIR_NAME/ --dest final_installer/ \
   --arch "$REDHAT_PLATFORM" --options.version $INAN_INSTALLER_VERSION \
   --license ../LICENSE

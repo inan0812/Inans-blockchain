@@ -9,9 +9,9 @@ THIS IS IN EARLY TESTING. THE GENESIS WILL BE ROUTINELY CHANGED AS TESTS PROCEED
 
 | Current Release/main | Development Branch/dev |
 |         :---:          |          :---:         |
-| [![Ubuntu Core Tests](https://github.com/Inan-Network/inan-blockchain/actions/workflows/build-test-ubuntu-core.yml/badge.svg)](https://github.com/Inan-Network/inan-blockchain/actions/workflows/build-test-ubuntu-core.yml) [![MacOS Core Tests](https://github.com/Inan-Network/inan-blockchain/actions/workflows/build-test-macos-core.yml/badge.svg)](https://github.com/Inan-Network/inan-blockchain/actions/workflows/build-test-macos-core.yml) [![Windows Installer on Windows 10 and Python 3.7](https://github.com/Inan-Network/inan-blockchain/actions/workflows/build-windows-installer.yml/badge.svg)](https://github.com/Inan-Network/inan-blockchain/actions/workflows/build-windows-installer.yml)  |  [![Ubuntu Core Tests](https://github.com/Inan-Network/inan-blockchain/actions/workflows/build-test-ubuntu-core.yml/badge.svg?branch=dev)](https://github.com/Inan-Network/inan-blockchain/actions/workflows/build-test-ubuntu-core.yml) [![MacOS Core Tests](https://github.com/Inan-Network/inan-blockchain/actions/workflows/build-test-macos-core.yml/badge.svg?branch=dev)](https://github.com/Inan-Network/inan-blockchain/actions/workflows/build-test-macos-core.yml) [![Windows Installer on Windows 10 and Python 3.7](https://github.com/Inan-Network/inan-blockchain/actions/workflows/build-windows-installer.yml/badge.svg?branch=dev)](https://github.com/Inan-Network/inan-blockchain/actions/workflows/build-windows-installer.yml) |
+| [![Ubuntu Core Tests](https://github.com/Inan-Network/Inans-blockchain/actions/workflows/build-test-ubuntu-core.yml/badge.svg)](https://github.com/Inan-Network/Inans-blockchain/actions/workflows/build-test-ubuntu-core.yml) [![MacOS Core Tests](https://github.com/Inan-Network/Inans-blockchain/actions/workflows/build-test-macos-core.yml/badge.svg)](https://github.com/Inan-Network/Inans-blockchain/actions/workflows/build-test-macos-core.yml) [![Windows Installer on Windows 10 and Python 3.7](https://github.com/Inan-Network/Inans-blockchain/actions/workflows/build-windows-installer.yml/badge.svg)](https://github.com/Inan-Network/Inans-blockchain/actions/workflows/build-windows-installer.yml)  |  [![Ubuntu Core Tests](https://github.com/Inan-Network/Inans-blockchain/actions/workflows/build-test-ubuntu-core.yml/badge.svg?branch=dev)](https://github.com/Inan-Network/Inans-blockchain/actions/workflows/build-test-ubuntu-core.yml) [![MacOS Core Tests](https://github.com/Inan-Network/Inans-blockchain/actions/workflows/build-test-macos-core.yml/badge.svg?branch=dev)](https://github.com/Inan-Network/Inans-blockchain/actions/workflows/build-test-macos-core.yml) [![Windows Installer on Windows 10 and Python 3.7](https://github.com/Inan-Network/Inans-blockchain/actions/workflows/build-windows-installer.yml/badge.svg?branch=dev)](https://github.com/Inan-Network/Inans-blockchain/actions/workflows/build-windows-installer.yml) |
 
-![GitHub contributors](https://img.shields.io/github/contributors/Inan-Network/inan-blockchain?logo=GitHub)
+![GitHub contributors](https://img.shields.io/github/contributors/Inan-Network/Inans-blockchain?logo=GitHub)
 
 Inan is a modern cryptocurrency built from scratch, designed to be efficient, decentralized, and secure. Here are some of the features and benefits:
 * [Proof of space and time](https://docs.google.com/document/d/1tmRIb7lgi4QfKkNaxuKOBHRmwbVlGL4f7EsBDr_5xZE/edit) based consensus which allows anyone to farm with commodity hardware
@@ -23,8 +23,8 @@ Inan is a modern cryptocurrency built from scratch, designed to be efficient, de
 * Support for light clients with fast, objective syncing
 * A growing community of farmers and developers around the world
 
-Please check out the [wiki](https://github.com/Inan-Network/inan-blockchain/wiki)
-and [FAQ](https://github.com/Inan-Network/inan-blockchain/wiki/FAQ) for
+Please check out the [wiki](https://github.com/Inan-Network/Inans-blockchain/wiki)
+and [FAQ](https://github.com/Inan-Network/Inans-blockchain/wiki/FAQ) for
 information on this project.
 
 Python 3.7+ is required. Make sure your default python version is >=3.7
@@ -45,13 +45,13 @@ for consensus.
 ## Installing
 
 Install instructions are available in the
-[INSTALL](https://github.com/Inan-Network/inan-blockchain/wiki/INSTALL)
+[INSTALL](https://github.com/Inan-Network/Inans-blockchain/wiki/INSTALL)
 section of the
-[inan-blockchain repository wiki](https://github.com/Inan-Network/inan-blockchain/wiki).
+[Inans-blockchain repository wiki](https://github.com/Inan-Network/Inans-blockchain/wiki).
 
 ## Running
 
 Once installed, a
-[Quick Start Guide](https://github.com/Inan-Network/inan-blockchain/wiki/Quick-Start-Guide)
+[Quick Start Guide](https://github.com/Inan-Network/Inans-blockchain/wiki/Quick-Start-Guide)
 is available from the repository
-[wiki](https://github.com/Inan-Network/inan-blockchain/wiki).
+[wiki](https://github.com/Inan-Network/Inans-blockchain/wiki).

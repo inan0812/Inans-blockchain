@@ -41,7 +41,7 @@ dev_dependencies = [
 ]
 
 kwargs = dict(
-    name="inan-blockchain",
+    name="Inans-blockchain",
     author="Mariano Sorgente",
     author_email="mariano@chia.net",
     description="Inan blockchain full node, farmer, timelord, and wallet.",

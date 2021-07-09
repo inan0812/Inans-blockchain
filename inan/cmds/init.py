@@ -21,7 +21,7 @@ def init_cmd(ctx: click.Context, create_certs: str):
     - Run `inan init -c [directory]` on your remote harvester,
       where [directory] is the the copy of your Farming Machine CA directory
     - Get more details on remote harvester on Inan wiki:
-      https://github.com/Inan-Network/inan-blockchain/wiki/Farming-on-many-machines
+      https://github.com/Inan-Network/Inans-blockchain/wiki/Farming-on-many-machines
     """
     from pathlib import Path
     from .init_funcs import init

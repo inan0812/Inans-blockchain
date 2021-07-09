@@ -46,12 +46,12 @@ Write-Output "Inan Version is: $env:INAN_INSTALLER_VERSION"
 Write-Output "   ---"
 
 Write-Output "   ---"
-Write-Output "Build inan-blockchain wheels"
+Write-Output "Build Inans-blockchain wheels"
 Write-Output "   ---"
 pip wheel --use-pep517 --extra-index-url https://pypi.chia.net/simple/ -f . --wheel-dir=.\build_scripts\win_build .
 
 Write-Output "   ---"
-Write-Output "Install inan-blockchain wheels into venv with pip"
+Write-Output "Install Inans-blockchain wheels into venv with pip"
 Write-Output "   ---"
 
 Write-Output "pip install miniupnpc"
@@ -60,8 +60,8 @@ pip install --no-index --find-links=.\win_build\ miniupnpc
 # Write-Output "pip install setproctitle"
 # pip install setproctitle==1.2.2
 
-Write-Output "pip install inan-blockchain"
-pip install --no-index --find-links=.\win_build\ inan-blockchain
+Write-Output "pip install Inans-blockchain"
+pip install --no-index --find-links=.\win_build\ Inans-blockchain
 
 Write-Output "   ---"
 Write-Output "Use pyinstaller to create inan .exe's"

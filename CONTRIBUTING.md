@@ -1,13 +1,13 @@
 # Introduction
 
-Welcome to the inan-blockchain project!
+Welcome to the Inans-blockchain project!
 We are happy that you are taking a look at the code for Inan, a proof of space and time cryptocurrency.
 
 A lot of fascinating new cryptography and blockchain concepts are used and implemented here.
 This repo includes the code for the Inan full node, farmer, and timelord (in inan folder), which are all written in python.
-It also includes a verifiable delay function implementation that it imports from the [chiavdf repo](https://github.com/Inan-Network/chiavdf) (in c/c++), and a proof of space implementation that it imports from the [chiapos repo](https://github.com/Inan-Network/chiapos). BLS signatures are imported from the [bls-signatures repo](https://github.com/Inan-Network/bls-signatures) as blspy. There is an additional dependency on the [chiabip158 repo](https://github.com/Inan-Network/chiabip158). For major platforms, binary and source wheels are shipped to PyPI from each dependent repo. Then inan-blockchain can pip install those from PyPI or they can be prepackaged as is done for the Windows installer. On unsupported platforms, pip will fall back to the source distributions, to be compiled locally.
+It also includes a verifiable delay function implementation that it imports from the [chiavdf repo](https://github.com/Inan-Network/chiavdf) (in c/c++), and a proof of space implementation that it imports from the [chiapos repo](https://github.com/Inan-Network/chiapos). BLS signatures are imported from the [bls-signatures repo](https://github.com/Inan-Network/bls-signatures) as blspy. There is an additional dependency on the [chiabip158 repo](https://github.com/Inan-Network/chiabip158). For major platforms, binary and source wheels are shipped to PyPI from each dependent repo. Then Inans-blockchain can pip install those from PyPI or they can be prepackaged as is done for the Windows installer. On unsupported platforms, pip will fall back to the source distributions, to be compiled locally.
 
-If you want to learn more about this project, read the [wiki](https://github.com/Inan-Network/inan-blockchain/wiki), or check out the [green paper](https://www.chia.net/assets/InanGreenPaper.pdf).
+If you want to learn more about this project, read the [wiki](https://github.com/Inan-Network/Inans-blockchain/wiki), or check out the [green paper](https://www.chia.net/assets/InanGreenPaper.pdf).
 
 ## Contributions
 
@@ -82,7 +82,7 @@ workflow.
 3. Install BlackConnect plugin
 4. Set to run python black on save
 5. Set line length to 120
-6. Install these linters https://github.com/Inan-Network/inan-blockchain/tree/main/.github/linters
+6. Install these linters https://github.com/Inan-Network/Inans-blockchain/tree/main/.github/linters
 
 ## Testnets and review environments
 

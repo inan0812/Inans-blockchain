@@ -5,10 +5,10 @@ if [ ! "$1" ]; then
 	exit 1
 elif [ "$1" = "amd64" ]; then
 	PLATFORM="$1"
-	DIR_NAME="inan-blockchain-linux-x64"
+	DIR_NAME="Inans-blockchain-linux-x64"
 else
 	PLATFORM="$1"
-	DIR_NAME="inan-blockchain-linux-arm64"
+	DIR_NAME="Inans-blockchain-linux-arm64"
 fi
 
 pip install setuptools_scm
@@ -55,7 +55,7 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	exit $LAST_EXIT_CODE
 fi
 
-electron-packager . inan-blockchain --asar.unpack="**/daemon/**" --platform=linux \
+electron-packager . Inans-blockchain --asar.unpack="**/daemon/**" --platform=linux \
 --icon=src/assets/img/Inan.icns --overwrite --app-bundle-id=net.inan.blockchain \
 --appVersion=$INAN_INSTALLER_VERSION
 LAST_EXIT_CODE=$?
