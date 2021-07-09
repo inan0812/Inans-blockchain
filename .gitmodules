@@ -1,8 +1,8 @@
 [submodule "inan-blockchain-gui"]
 	path = inan-blockchain-gui
-	url = https://github.com/Inan-Network/inan-blockchain-gui.git
+	url = https://github.com/inan0812/inan-blockchain-gui.git
 	branch = pools
 [submodule "mozilla-ca"]
 	path = mozilla-ca
-	url = https://github.com/Inan-Network/mozilla-ca.git
+	url = https://github.com/inan0812/mozilla-ca.git
         branch = main
