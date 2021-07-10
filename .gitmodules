@@ -5,3 +5,4 @@
 [submodule "Inans-blockchain-gui"]
 	path = Inans-blockchain-gui
 	url = https://github.com/inan0812/Inans-blockchain-gui.git
+	branch = main
