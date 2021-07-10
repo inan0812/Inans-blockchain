@@ -9,7 +9,7 @@ wallet_program_files = set(
     [
         "inan/wallet/puzzles/calculate_synthetic_public_key.clvm",
         "inan/wallet/puzzles/cc.clvm",
-        "inan/wallet/puzzles/inanlisp_deserialisation.clvm",
+        "inan/wallet/puzzles/chialisp_deserialisation.clvm",
         "inan/wallet/puzzles/rom_bootstrap_generator.clvm",
         "inan/wallet/puzzles/generator_for_single_coin.clvm",
         "inan/wallet/puzzles/genesis-by-coin-id-with-0.clvm",

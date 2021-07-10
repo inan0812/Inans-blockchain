@@ -4,7 +4,7 @@ from inan.types.blockchain_format.program import Program, INFINITE_COST
 from inan.util.byte_types import hexstr_to_bytes
 from inan.wallet.puzzles.load_clvm import load_clvm
 
-DESERIALIZE_MOD = load_clvm("inanlisp_deserialisation.clvm", package_or_requirement="inan.wallet.puzzles")
+DESERIALIZE_MOD = load_clvm("chialisp_deserialisation.clvm", package_or_requirement="inan.wallet.puzzles")
 
 
 def serialized_atom_overflow(size):

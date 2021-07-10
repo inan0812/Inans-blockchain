@@ -7,7 +7,7 @@ from inan.types.blockchain_format.program import Program
 from inan.types.blockchain_format.sized_bytes import bytes32
 from inan.types.condition_opcodes import ConditionOpcode
 from inan.util.ints import uint64
-from inan.wallet.inanlisp import sexp
+from inan.wallet.chialisp import sexp
 from inan.wallet.puzzles.load_clvm import load_clvm
 
 RATE_LIMITED_MODE = 1
