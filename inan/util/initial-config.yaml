@@ -3,7 +3,7 @@ min_mainnet_k_size: 32
 # Send a ping to all peers after ping_interval seconds
 ping_interval: 120
 self_hostname: &self_hostname "localhost"
-daemon_port: 54545
+daemon_port: 42065
 inbound_rate_limit_percent: 1000
 outbound_rate_limit_percent: 300
 
@@ -126,7 +126,7 @@ harvester:
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 8560
+  rpc_port: 42060
   num_threads: 30
   plot_loading_frequency_seconds: 120
 
@@ -175,7 +175,7 @@ farmer:
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 8559
+  rpc_port: 42061
 
   # To send a share to a pool, a proof of space must have required_iters less than this number
   pool_share_threshold: 1000
@@ -192,7 +192,7 @@ farmer:
 # Don't run this unless you want to run VDF clients on the local machine.
 timelord_launcher:
   # The server where the VDF clients will connect to.
-  port: 8000
+  port: 42068
   # Number of VDF client processes to keep alive in the local machine.
   process_count: 3
   logging: *logging
@@ -218,7 +218,7 @@ timelord:
   # The ip and port where the TCP clients will connect.
   vdf_server:
     host: *self_hostname
-    port: 8000
+    port: 42068
   logging: *logging
   network_overrides: *network_overrides
   selected_network: *selected_network
@@ -257,7 +257,7 @@ full_node:
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 9091
+  rpc_port: 42067
 
   # Use UPnP to attempt to allow other full nodes to reach your node behind a gateway
   enable_upnp: True
@@ -302,7 +302,7 @@ full_node:
   # List of trusted DNS seeders to bootstrap from.
   # If you modify this, please change the hardcode as well from FullNode.set_server()
   dns_servers:
-    - "dns-introducer.chia.net"
+    - "dns-introducer.inansthingy.net"
   farmer_peer:
       host: *self_hostname
       port: 42071
@@ -310,8 +310,8 @@ full_node:
       host: *self_hostname
       port: 42070
   introducer_peer:
-      host: introducer.chia.net  # Inan AWS introducer IPv4/IPv6
-      port: 42069
+      host: introducer.inansthingy.net  # Inan AWS introducer IPv4/IPv6
+      port: 42067
   wallet_peer:
     host: *self_hostname
     port: 42073
@@ -327,10 +327,10 @@ full_node:
 
 ui:
    # The ui node server (if run) will run on this port
-  port: 9092
+  port: 42066
 
   # Which port to use to communicate with the full node
-  rpc_port: 9091
+  rpc_port: 42067
 
   # This SSH key is for the ui SSH server
   ssh_filename: config/ssh_host_key
@@ -341,14 +341,14 @@ ui:
   # this is where the electron UI will find its daemon
   # defaults to the one running locally with its private keys
   daemon_host: *self_hostname
-  daemon_port: 54545
+  daemon_port: 42065
   daemon_ssl:
     private_crt: config/ssl/daemon/private_daemon.crt
     private_key: config/ssl/daemon/private_daemon.key
 
 introducer:
   host: *self_hostname
-  port: 42068
+  port: 42067
   max_peers_to_send: 20
   # The introducer will only return peers who it has seen in the last
   # recent_peer_threshold seconds
@@ -363,7 +363,7 @@ introducer:
 
 wallet:
   port: 42073
-  rpc_port: 9090
+  rpc_port: 42062
 
   enable_profiler: False
 
@@ -394,8 +394,8 @@ wallet:
   recent_peer_threshold: 6000
 
   introducer_peer:
-    host: introducer.chia.net # Inan AWS introducer IPv4/IPv6
-    port: 42069
+    host: introducer.inansthingy.net # Inan AWS introducer IPv4/IPv6
+    port: 42067
 
   ssl:
     private_crt:  "config/ssl/wallet/private_wallet.crt"
