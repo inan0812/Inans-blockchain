@@ -71,7 +71,7 @@ network_overrides: &network_overrides
       DIFFICULTY_STARTING: 30
   config:
     mainnet:
-      address_prefix: "xch"
+      address_prefix: "DIK"
       default_full_node_port: 34448
     testnet0:
       address_prefix: "txch"
@@ -115,7 +115,7 @@ logging: &logging
   log_maxfilesrotation: 7 #  Max files in rotation. Default value 7 if the key is not set
   log_syslog: False  # If True, outputs to SysLog host and port specified
   log_syslog_host: "localhost"  # Send logging messages to a remote or local Unix syslog
-  log_syslog_port: 514  # UDP port of the remote or local Unix syslog
+  log_syslog_port: 3415  # UDP port of the remote or local Unix syslog
 
 harvester:
   # The harvester server (if run) will run on this port
