@@ -71,7 +71,7 @@ network_overrides: &network_overrides
       DIFFICULTY_STARTING: 30
   config:
     mainnet:
-      address_prefix: "DIK"
+      address_prefix: "xch"
       default_full_node_port: 34448
     testnet0:
       address_prefix: "txch"
