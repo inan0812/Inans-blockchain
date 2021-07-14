@@ -39,15 +39,15 @@ def calculate_base_farmer_reward(height: uint32) -> uint64:
     """
     if height == 0:
          return uint64(int(100000000 * _mojo_per_inan))
-     elif height < 3 * _blocks_per_year:
+    elif height < 3 * _blocks_per_year:
          return uint64(int(1024 * _mojo_per_inan))
-     elif height < 6 * _blocks_per_year:
+    elif height < 6 * _blocks_per_year:
          return uint64(int(512 * _mojo_per_inan))
-     elif height < 9 * _blocks_per_year:
+    elif height < 9 * _blocks_per_year:
          return uint64(int(256 * _mojo_per_inan))
-     elif height < 12 * _blocks_per_year:
+    elif height < 12 * _blocks_per_year:
          return uint64(int(128 * _mojo_per_inan))
-     else:
+    else:
          return uint64(int( 64 * _mojo_per_inan))
     
     # if height == 0:
