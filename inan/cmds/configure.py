@@ -110,7 +110,7 @@ def configure(
 
         elif testnet == "false" or testnet == "f":
             print("Setting Mainnet")
-            mainnet_port = "8444"
+            mainnet_port = "34448"
             mainnet_introducer = "introducer.chia.net"
             net = "mainnet"
             config["full_node"]["port"] = int(mainnet_port)
