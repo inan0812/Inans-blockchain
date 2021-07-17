@@ -8,7 +8,7 @@ from blspy import G1Element, G2Element
 from chiabip158 import PyBIP158
 
 from inan.consensus.block_record import BlockRecord
-from inan.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from inan.consensus.block_rewards import calculate_base_farmer_reward
 from inan.consensus.blockchain_interface import BlockchainInterface
 from inan.consensus.coinbase import create_farmer_coin, create_pool_coin
 from inan.consensus.constants import ConsensusConstants
@@ -150,9 +150,6 @@ def create_foliage(
                 curr = blocks.block_record(curr.prev_hash)
 
             assert curr.fees is not None
-            pool_coin = create_pool_coin(
-                curr.height, curr.pool_puzzle_hash, calculate_pool_reward(curr.height), constants.GENESIS_CHALLENGE
-            )
 
             farmer_coin = create_farmer_coin(
                 curr.height,
@@ -161,25 +158,19 @@ def create_foliage(
                 constants.GENESIS_CHALLENGE,
             )
             assert curr.header_hash == prev_transaction_block.header_hash
-            reward_claims_incorporated += [pool_coin, farmer_coin]
+            reward_claims_incorporated += [farmer_coin]
 
             if curr.height > 0:
                 curr = blocks.block_record(curr.prev_hash)
                 # Prev block is not genesis
                 while not curr.is_transaction_block:
-                    pool_coin = create_pool_coin(
-                        curr.height,
-                        curr.pool_puzzle_hash,
-                        calculate_pool_reward(curr.height),
-                        constants.GENESIS_CHALLENGE,
-                    )
                     farmer_coin = create_farmer_coin(
                         curr.height,
                         curr.farmer_puzzle_hash,
                         calculate_base_farmer_reward(curr.height),
                         constants.GENESIS_CHALLENGE,
                     )
-                    reward_claims_incorporated += [pool_coin, farmer_coin]
+                    reward_claims_incorporated += [farmer_coin]
                     curr = blocks.block_record(curr.prev_hash)
         additions.extend(reward_claims_incorporated.copy())
         for coin in additions:

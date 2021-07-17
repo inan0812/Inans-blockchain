@@ -10,15 +10,15 @@ testnet_kwargs = {
     "SUB_SLOT_ITERS_STARTING": 2 ** 27,
     # DIFFICULTY_STARTING is the starting difficulty for the first epoch, which is then further
     # multiplied by another factor of DIFFICULTY_CONSTANT_FACTOR, to be used in the VDF iter calculation formula.
-    "DIFFICULTY_CONSTANT_FACTOR": 2 ** 59,
-    "DIFFICULTY_STARTING": 7,
+    "DIFFICULTY_CONSTANT_FACTOR": 2 ** 58,
+    "DIFFICULTY_STARTING": 28,
     "DIFFICULTY_CHANGE_MAX_FACTOR": 3,  # The next difficulty is truncated to range [prev / FACTOR, prev * FACTOR]
     # These 3 constants must be changed at the same time
     "SUB_EPOCH_BLOCKS": 768,  # The number of blocks per sub-epoch, mainnet 384
     "EPOCH_BLOCKS": 2304,  # The number of blocks per epoch, mainnet 4608. Must be multiple of SUB_EPOCH_SB
     "SIGNIFICANT_BITS": 8,  # The number of bits to look at in difficulty and min iters. The rest are zeroed
     "DISCRIMINANT_SIZE_BITS": 1024,  # Max is 1024 (based on ClassGroupElement int size)
-    "NUMBER_ZERO_BITS_PLOT_FILTER": 10,  # H(plot signature of the challenge) must start with these many zeroes
+    "NUMBER_ZERO_BITS_PLOT_FILTER": 9,  # H(plot signature of the challenge) must start with these many zeroes
     "MIN_PLOT_SIZE": 32,  # 32 for mainnet
     "MAX_PLOT_SIZE": 50,
     "SUB_SLOT_TIME_TARGET": 600,  # The target number of seconds per slot, mainnet 600
@@ -28,9 +28,9 @@ testnet_kwargs = {
     # Used as the initial cc rc challenges, as well as first block back pointers, and first SES back pointer
     # We override this value based on the chain being run (testnet0, testnet1, mainnet, etc)
     # Default used for tests is std_hash(b'')
-    "GENESIS_CHALLENGE": bytes.fromhex("d00dd00d98fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"),
+    "GENESIS_CHALLENGE": bytes.fromhex("b005e00d98fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"),
     # Forks of inan should change this value to provide replay attack protection. This is set to mainnet genesis chall
-    "AGG_SIG_ME_ADDITIONAL_DATA": bytes.fromhex("d00dd00d183532bff220ba46c268991a3ff07eb358e8255a65c30a2dce0e5fbb"),
+    "AGG_SIG_ME_ADDITIONAL_DATA": bytes.fromhex("b005e00d183532bff220ba46c268991a3ff07eb358e8255a65c30a2dce0e5fbb"),
     "GENESIS_PRE_FARM_POOL_PUZZLE_HASH": bytes.fromhex(
         "c7edf530dc5f78149484f34bf8369064d543852adc4a606b46cdf2b1cfc6d286"
     ),
@@ -43,9 +43,9 @@ testnet_kwargs = {
     # Max coin amount, fits into 64 bits
     "MAX_COIN_AMOUNT": uint64((1 << 64) - 1),
     # Max block cost in clvm cost units
-    "MAX_BLOCK_COST_CLVM": 11000000000,
+    "MAX_BLOCK_COST_CLVM": 1100000,
     # The cost per byte of generator program
-    "COST_PER_BYTE": 12000,
+    "COST_PER_BYTE": 1,
     "WEIGHT_PROOF_THRESHOLD": 2,
     "BLOCKS_CACHE_SIZE": 2304 + (256 * 4),
     "WEIGHT_PROOF_RECENT_BLOCKS": 1000,
