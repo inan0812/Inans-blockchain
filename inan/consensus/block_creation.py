@@ -8,7 +8,7 @@ from blspy import G1Element, G2Element
 from chiabip158 import PyBIP158
 
 from inan.consensus.block_record import BlockRecord
-from inan.consensus.block_rewards import calculate_base_farmer_reward
+from inan.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
 from inan.consensus.blockchain_interface import BlockchainInterface
 from inan.consensus.coinbase import create_farmer_coin, create_pool_coin
 from inan.consensus.constants import ConsensusConstants
@@ -56,7 +56,6 @@ def create_foliage(
     Creates a foliage for a given reward chain block. This may or may not be a tx block. In the case of a tx block,
     the return values are not None. This is called at the signage point, so some of this information may be
     tweaked at the infusion point.
-
     Args:
         constants: consensus constants being used for this chain
         reward_block_unfinished: the reward block to look at, potentially at the signage point
@@ -71,7 +70,6 @@ def create_foliage(
         get_plot_signature: retrieve the signature corresponding to the plot public key
         get_pool_signature: retrieve the signature corresponding to the pool public key
         seed: seed to randomize block
-
     """
 
     if prev_block is not None:
@@ -150,6 +148,9 @@ def create_foliage(
                 curr = blocks.block_record(curr.prev_hash)
 
             assert curr.fees is not None
+            pool_coin = create_pool_coin(
+                curr.height, curr.pool_puzzle_hash, calculate_pool_reward(curr.height), constants.GENESIS_CHALLENGE
+            )
 
             farmer_coin = create_farmer_coin(
                 curr.height,
@@ -158,19 +159,25 @@ def create_foliage(
                 constants.GENESIS_CHALLENGE,
             )
             assert curr.header_hash == prev_transaction_block.header_hash
-            reward_claims_incorporated += [farmer_coin]
+            reward_claims_incorporated += [pool_coin, farmer_coin]
 
             if curr.height > 0:
                 curr = blocks.block_record(curr.prev_hash)
                 # Prev block is not genesis
                 while not curr.is_transaction_block:
+                    pool_coin = create_pool_coin(
+                        curr.height,
+                        curr.pool_puzzle_hash,
+                        calculate_pool_reward(curr.height),
+                        constants.GENESIS_CHALLENGE,
+                    )
                     farmer_coin = create_farmer_coin(
                         curr.height,
                         curr.farmer_puzzle_hash,
                         calculate_base_farmer_reward(curr.height),
                         constants.GENESIS_CHALLENGE,
                     )
-                    reward_claims_incorporated += [farmer_coin]
+                    reward_claims_incorporated += [pool_coin, farmer_coin]
                     curr = blocks.block_record(curr.prev_hash)
         additions.extend(reward_claims_incorporated.copy())
         for coin in additions:
@@ -293,7 +300,6 @@ def create_unfinished_block(
     """
     Creates a new unfinished block using all the information available at the signage point. This will have to be
     modified using information from the infusion point.
-
     Args:
         constants: consensus constants being used for this chain
         sub_slot_start_total_iters: the starting sub-slot iters at the signage point sub-slot
@@ -317,9 +323,7 @@ def create_unfinished_block(
         prev_block: previous block (already in chain) from the signage point
         blocks: dictionary from header hash to SBR of all included SBR
         finished_sub_slots_input: finished_sub_slots at the signage point
-
     Returns:
-
     """
     if finished_sub_slots_input is None:
         finished_sub_slots: List[EndOfSubSlotBundle] = []
@@ -423,7 +427,6 @@ def unfinished_block_to_full_block(
     """
     Converts an unfinished block to a finished block. Includes all the infusion point VDFs as well as tweaking
     other properties (height, weight, sub-slots, etc)
-
     Args:
         unfinished_block: the unfinished block to finish
         cc_ip_vdf: the challenge chain vdf info at the infusion point
@@ -437,7 +440,6 @@ def unfinished_block_to_full_block(
         blocks: dictionary from header hash to SBR of all included SBR
         total_iters_sp: total iters at the signage point
         difficulty: difficulty at the infusion point
-
     """
     # Replace things that need to be replaced, since foliage blocks did not necessarily have the latest information
     if prev_block is None:
