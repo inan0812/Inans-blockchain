@@ -187,7 +187,7 @@ class FullNode:
             dns_servers = self.config["dns_servers"]
         elif self.config["port"] == 34448:
             # If `dns_servers` misses from the `config`, hardcode it if we're running mainnet.
-            dns_servers.append("dns-introducer.chia.net")
+            dns_servers.append("dns-introducer.scampool.org")
         try:
             self.full_node_peers = FullNodePeers(
                 self.server,
