@@ -3,19 +3,19 @@ from inan.util.ints import uint64
 from .constants import ConsensusConstants
 
 testnet_kwargs = {
-    "SLOT_BLOCKS_TARGET": 64,
+    "SLOT_BLOCKS_TARGET": 128,
     "MIN_BLOCKS_PER_CHALLENGE_BLOCK": 32,  # Must be less than half of SLOT_BLOCKS_TARGET
-    "MAX_SUB_SLOT_BLOCKS": 256,  # Must be less than half of SUB_EPOCH_BLOCKS
-    "NUM_SPS_SUB_SLOT": 128,  # Must be a power of 2
+    "MAX_SUB_SLOT_BLOCKS": 512,  # Must be less than half of SUB_EPOCH_BLOCKS
+    "NUM_SPS_SUB_SLOT": 256,  # Must be a power of 2
     "SUB_SLOT_ITERS_STARTING": 2 ** 27,
     # DIFFICULTY_STARTING is the starting difficulty for the first epoch, which is then further
     # multiplied by another factor of DIFFICULTY_CONSTANT_FACTOR, to be used in the VDF iter calculation formula.
-    "DIFFICULTY_CONSTANT_FACTOR": 2 ** 53,
-    "DIFFICULTY_STARTING": 28,
+    "DIFFICULTY_CONSTANT_FACTOR": 2 ** 56,
+    "DIFFICULTY_STARTING": 146,
     "DIFFICULTY_CHANGE_MAX_FACTOR": 3,  # The next difficulty is truncated to range [prev / FACTOR, prev * FACTOR]
     # These 3 constants must be changed at the same time
-    "SUB_EPOCH_BLOCKS": 768,  # The number of blocks per sub-epoch, mainnet 384
-    "EPOCH_BLOCKS": 2304,  # The number of blocks per epoch, mainnet 4608. Must be multiple of SUB_EPOCH_SB
+    "SUB_EPOCH_BLOCKS": 1536,  # The number of blocks per sub-epoch, mainnet 384
+    "EPOCH_BLOCKS": 4608,  # The number of blocks per epoch, mainnet 4608. Must be multiple of SUB_EPOCH_SB
     "SIGNIFICANT_BITS": 8,  # The number of bits to look at in difficulty and min iters. The rest are zeroed
     "DISCRIMINANT_SIZE_BITS": 1024,  # Max is 1024 (based on ClassGroupElement int size)
     "NUMBER_ZERO_BITS_PLOT_FILTER": 9,  # H(plot signature of the challenge) must start with these many zeroes
@@ -30,7 +30,7 @@ testnet_kwargs = {
     # Default used for tests is std_hash(b'')
     "GENESIS_CHALLENGE": bytes.fromhex("d005e00d98fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"),
     # Forks of inan should change this value to provide replay attack protection. This is set to mainnet genesis chall
-    "AGG_SIG_ME_ADDITIONAL_DATA": bytes.fromhex("d005e00d183532bff220ba46c268991a3ff07eb358e8255a65c30a2dce0e5fbb"),
+    
     "GENESIS_PRE_FARM_POOL_PUZZLE_HASH": bytes.fromhex(
         "c7edf530dc5f78149484f34bf8369064d543852adc4a606b46cdf2b1cfc6d286"
     ),
@@ -47,14 +47,14 @@ testnet_kwargs = {
     # The cost per byte of generator program
     "COST_PER_BYTE": 1,
     "WEIGHT_PROOF_THRESHOLD": 2,
-    "BLOCKS_CACHE_SIZE": 2304 + (256 * 4),
+    "BLOCKS_CACHE_SIZE": 4608 + (256 * 4),
     "WEIGHT_PROOF_RECENT_BLOCKS": 1000,
     "MAX_BLOCK_COUNT_PER_REQUESTS": 32,  # Allow up to 32 blocks per request
     "INITIAL_FREEZE_END_TIMESTAMP": 1620061200,  # Mon May 03 2021 17:00:00 GMT+0000
     "NETWORK_TYPE": 0,
     "MAX_GENERATOR_SIZE": 1000000,
     "MAX_GENERATOR_REF_LIST_SIZE": 512,  # Number of references allowed in the block generator ref list
-    "POOL_SUB_SLOT_ITERS": 75200000000,  # iters limit * NUM_SPS
+    "POOL_SUB_SLOT_ITERS": 150400000000,  # iters limit * NUM_SPS
 }
 
 

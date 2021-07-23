@@ -11,7 +11,7 @@ network_overrides: &network_overrides
   constants:
     mainnet:
       NETWORK_TYPE: 0
-      GENESIS_CHALLENGE: d005e00d183532bff220ba46c268991a3ff07eb358e8255a65c30a2dce0e5fbb
+      GENESIS_CHALLENGE: null
       GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "c7edf530dc5f78149484f34bf8369064d543852adc4a606b46cdf2b1cfc6d286"
       GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "c7edf530dc5f78149484f34bf8369064d543852adc4a606b46cdf2b1cfc6d286"
     testnet0:
@@ -88,8 +88,8 @@ network_overrides: &network_overrides
       default_full_node_port: 34448
 
 selected_network: &selected_network "mainnet"
-#ALERTS_URL: https://download.scampool.org/notify/mainnet_alert.txt
-INAN_ALERTS_PUBKEY: 89b7fd87cb56e926ecefb879a29aae308be01f31980569f6a75a69d2a9a69daefd71fb778d865f7c50d6c967e3025937
+ALERTS_URL: https://download.scampool.org/notify/mainnet_alert.txt
+INAN_ALERTS_PUBKEY: a06f58a173974dcba0b4f743fcfeb4a8582e2bf17b01005c30ecc9c45e042ca82dd964e6250e10eaf2916f236947c9e8
 
 # public ssl ca is included in source code
 # Private ssl ca is used for trusted connections between machines user owns
