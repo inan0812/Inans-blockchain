@@ -1,7 +1,7 @@
 from inan.util.ints import uint32, uint64
 
 # 1 Inan coin = 100,000,000 = 100 million mojo.
-_mojo_per_inan = 100000000
+_mojo_per_inan = 1000000000
 _blocks_per_year = 6727680  # 64 * 6 * 24 * 365
 
 

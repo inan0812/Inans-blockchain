@@ -14,7 +14,7 @@ from inan.util.misc import format_bytes
 from inan.util.misc import format_minutes
 from inan.util.network import is_localhost
 
-SECONDS_PER_BLOCK = (24 * 3600) / 9216
+SECONDS_PER_BLOCK = (24 * 3600) / 18432
 
 
 async def get_harvesters(farmer_rpc_port: int) -> Optional[Dict[str, Any]]:

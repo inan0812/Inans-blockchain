@@ -30,7 +30,7 @@ testnet_kwargs = {
     # Default used for tests is std_hash(b'')
     "GENESIS_CHALLENGE": bytes.fromhex("d005e00d98fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"),
     # Forks of inan should change this value to provide replay attack protection. This is set to mainnet genesis chall
-    
+    "AGG_SIG_ME_ADDITIONAL_DATA": bytes.fromhex("d005eaad98fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"),
     "GENESIS_PRE_FARM_POOL_PUZZLE_HASH": bytes.fromhex(
         "c7edf530dc5f78149484f34bf8369064d543852adc4a606b46cdf2b1cfc6d286"
     ),
@@ -43,9 +43,9 @@ testnet_kwargs = {
     # Max coin amount, fits into 64 bits
     "MAX_COIN_AMOUNT": uint64((1 << 64) - 1),
     # Max block cost in clvm cost units
-    "MAX_BLOCK_COST_CLVM": 1100000,
+    "MAX_BLOCK_COST_CLVM": 11000000,
     # The cost per byte of generator program
-    "COST_PER_BYTE": 1,
+    "COST_PER_BYTE": 12,
     "WEIGHT_PROOF_THRESHOLD": 2,
     "BLOCKS_CACHE_SIZE": 4608 + (256 * 4),
     "WEIGHT_PROOF_RECENT_BLOCKS": 1000,
