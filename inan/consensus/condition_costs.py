@@ -3,8 +3,8 @@ from enum import Enum
 
 class ConditionCost(Enum):
     # Condition Costs
-    AGG_SIG = 1200000  # the cost of one G1 subgroup check + aggregated signature validation
-    CREATE_COIN = 1800000
+    AGG_SIG = 120  # the cost of one G1 subgroup check + aggregated signature validation
+    CREATE_COIN = 180
     ASSERT_MY_COIN_ID = 0
     ASSERT_MY_PARENT_ID = 0
     ASSERT_MY_PUZZLEHASH = 0

@@ -1,8 +1,8 @@
 from inan.util.ints import uint32, uint64
 
-# 1 Inan coin = 100,000,000 = 100 million mojo.
-_mojo_per_inan = 1000000000
-_blocks_per_year = 6727680  # 64 * 6 * 24 * 365
+# 1 Inan coin = 100,000,000 = 100 trillion mojo.
+_mojo_per_inan = 100000000
+_blocks_per_year = 6727680  # (32 * 6 * 24 * 365) * 4
 
 
 def calculate_pool_reward(height: uint32) -> uint64:
@@ -13,7 +13,7 @@ def calculate_pool_reward(height: uint32) -> uint64:
     (3 years, etc), due to fluctuations in difficulty. They will likely come early, if the network space and VDF
     rates increase continuously.
     """
-    return 0
+    return 3
     # if height == 0:
         # return uint64(int((7 / 8) * 100000000 * _mojo_per_inan))
     # elif height < 3 * _blocks_per_year:
@@ -38,9 +38,9 @@ def calculate_base_farmer_reward(height: uint32) -> uint64:
     rates increase continuously.
     """
     if height == 0:
-         return uint64(int(100000000 * _mojo_per_inan))
-    elif height < 3 * _blocks_per_year:
          return uint64(int(2 * _mojo_per_inan))
+    elif height < 3 * _blocks_per_year:
+         return uint64(int(1024 * _mojo_per_inan))
     elif height < 6 * _blocks_per_year:
          return uint64(int(2 * _mojo_per_inan))
     elif height < 9 * _blocks_per_year:
