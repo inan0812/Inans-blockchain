@@ -174,7 +174,7 @@ class WebSocketServer:
                     break
                 await asyncio.sleep(60)
 
-                selected_network = self.net_config["selected_network"]
+                selected = self.net_config["selected_network"]
                 alert_url = self.net_config["ALERTS_URL"]
                 log.debug("Fetching alerts")
                 response = await fetch(alert_url)
@@ -198,7 +198,7 @@ class WebSocketServer:
                         continue
 
                     challenge = data_json["genesis_challenge"]
-                    self.net_config["network_overrides"]["constants"][selected]["AGG_SIG_ME_ADDITIONAL_DATA"] = challenge
+                    self.net_config["network_overrides"]["constants"][selected]["GENESIS_CHALLENGE"] = challenge
                     save_config(self.root_path, "config.yaml", self.net_config)
                     self.genesis_initialized = True
                     break
