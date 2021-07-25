@@ -27,8 +27,6 @@ from inan.util.path import mkdir
 from inan.util.service_groups import validate_service
 from inan.util.setproctitle import setproctitle
 from inan.util.ws_message import WsRpcMessage, create_payload, format_response
-from inan.util.validate_alert import validate_alert
-from inan.util.config import load_config, save_config, config_path_for_filename
 
 io_pool_exc = ThreadPoolExecutor()
 
@@ -154,59 +152,8 @@ class WebSocketServer:
             ping_timeout=300,
             ssl=self.ssl_context,
         )
-        # Temporary Flag Drop Code
-        selected = self.net_config["selected_network"]
-        challenge = self.net_config["network_overrides"]["constants"][selected]["GENESIS_CHALLENGE"]
-
-        if challenge is None:
-            self.genesis_initialized = False
-            self.alert_task = asyncio.create_task(self.check_for_alerts())
-        else:
-            self.alert_task = None
-            self.genesis_initialized = True
-            
-        #end Temporary Flag Drop Code
         self.log.info("Waiting Daemon WebSocketServer closure")
         
-    # Temporary Flag Drop Check
-    async def check_for_alerts(self):
-        while True:
-            try:
-                if self.shut_down:
-                    break
-                await asyncio.sleep(60)
-
-                selected = self.net_config["selected_network"]
-                alert_url = self.net_config["ALERTS_URL"]
-                log.debug("Fetching alerts")
-                response = await fetch(alert_url)
-                log.debug(f"Fetched alert: {response}")
-                if response is None:
-                    continue
-
-                json_response = json.loads(response)
-                if "data" in json_response:
-                    pubkey = self.net_config["INAN_ALERTS_PUBKEY"]
-                    validated = validate_alert(response, pubkey)
-                    if validated is False:
-                        self.log.error(f"Error unable to validate alert! {response}")
-                        continue
-
-                    data = json_response["data"]
-                    data_json = json.loads(data)
-                    if data_json["ready"] is False:
-                        # Network not launched yet
-                        log.info("Network is not ready yet")
-                        continue
-
-                    challenge = data_json["genesis_challenge"]
-                    self.net_config["network_overrides"]["constants"][selected]["GENESIS_CHALLENGE"] = challenge
-                    save_config(self.root_path, "config.yaml", self.net_config)
-                    self.genesis_initialized = True
-                    break
-            except Exception as e:
-                log.error(f"Exception in check alerts task: {e}")
-    # Flag Temporary Flag Drop Check
     
     def cancel_task_safe(self, task: Optional[asyncio.Task]):
         if task is not None:
