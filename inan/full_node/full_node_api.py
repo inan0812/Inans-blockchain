@@ -292,7 +292,7 @@ class FullNodeAPI:
 
     @api_request
     async def request_blocks(self, request: full_node_protocol.RequestBlocks) -> Optional[Message]:
-        if request.end_height < request.start_height or request.end_height - request.start_height > 32:
+        if request.end_height < request.start_height or request.end_height - request.start_height > 512:
             reject = RejectBlocks(request.start_height, request.end_height)
             msg: Message = make_msg(ProtocolMessageTypes.reject_blocks, reject)
             return msg
@@ -1240,7 +1240,7 @@ class FullNodeAPI:
 
     @api_request
     async def request_header_blocks(self, request: wallet_protocol.RequestHeaderBlocks) -> Optional[Message]:
-        if request.end_height < request.start_height or request.end_height - request.start_height > 32:
+        if request.end_height < request.start_height or request.end_height - request.start_height > 512:
             return None
 
         header_hashes = []
