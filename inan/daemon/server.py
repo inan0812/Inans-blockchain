@@ -153,8 +153,8 @@ class WebSocketServer:
             ssl=self.ssl_context,
         )
         # Temporary Flag Drop Code
-        network_selector = self.net_config["selected_network"]
-        challenge = self.net_config["network_overrides"]["constants"][selected]["AGG_SIG_ME_ADDITIONAL_DATA"]
+        selected = self.net_config["selected_network"]
+        challenge = self.net_config["network_overrides"]["constants"][selected]["GENESIS_CHALLENGE"]
 
         if challenge is None:
             self.genesis_initialized = False
