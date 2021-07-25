@@ -27,6 +27,7 @@ from inan.util.path import mkdir
 from inan.util.service_groups import validate_service
 from inan.util.setproctitle import setproctitle
 from inan.util.ws_message import WsRpcMessage, create_payload, format_response
+from inan.util.validate_alert import validate_alert
 
 io_pool_exc = ThreadPoolExecutor()
 
